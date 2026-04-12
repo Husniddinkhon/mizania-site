@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MIZANIA | Premium Ethical Finance & Islamic Finance",
-  description: "MIZANIA is a premium multi-language website for ethical finance, Islamic finance, education, consulting, and investors.",
+  title: "MIZANIA | Ethical Finance, Islamic Finance, Education & Consulting",
+description: "MIZANIA is a premium brand focused on ethical finance, Islamic finance, education, consulting, justice, balance, and trust.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
