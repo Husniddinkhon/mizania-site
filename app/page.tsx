@@ -97,7 +97,7 @@ const languages = [
 
 type LanguageCode = (typeof languages)[number]["code"];
 
-const rtlLanguages = [];
+const rtlLanguages: LanguageCode[] = [];
 
 function latinUzbekToCyrillic(text) {
   if (!text) return text;
@@ -952,7 +952,6 @@ const ar = {
   },
 };
 
-const kir = convertToCyrillic(uzLatin);
 const dictionary: Record<LanguageCode, any> = {
   en: {
     ...en,
@@ -974,16 +973,6 @@ const dictionary: Record<LanguageCode, any> = {
       cta: "Связаться с MIZANIA",
     },
   },
-  kir: {
-    ...kir,
-    network: {
-      eyebrow: "Эксперт ва маслаҳат ҳамкорлик тармоғи",
-      title: "MIZANIA’нинг билим ва маслаҳат салоҳиятини кучайтирувчи танланган ҳамкор экспертлар.",
-      description: "MIZANIA ҳалол молия, исломий молия, таълим ва маслаҳат йўналишларида танланган олимлар, тадқиқотчилар ва соҳавий мутахассислар билан ҳамкорлик қилади.",
-      note: "Профиллар MIZANIAнинг билим ва маслаҳат йўналишидаги ҳамкорликлари ҳақида умумий маълумот сифатида тақдим этилган.",
-      cta: "MIZANIA билан боғланиш",
-    },
-  },
   uz: {
     ...uzLatin,
     network: {
@@ -994,16 +983,6 @@ const dictionary: Record<LanguageCode, any> = {
       cta: "MIZANIA bilan bog‘lanish",
     },
   },
-  ar: {
-    ...ar,
-    network: {
-      eyebrow: "شبكة الخبراء والتعاون الاستشاري",
-      title: "خبراء متعاونون مختارون يعززون العمق المعرفي والاستشاري لدى MIZANIA.",
-      description: "تتعاون MIZANIA مع نخبة من العلماء والباحثين والمتخصصين في التمويل الأخلاقي والتمويل الإسلامي والتعليم والمبادرات الاستشارية.",
-      note: "تُعرض هذه الملفات لأغراض تعريفية عامة ضمن إطار التعاون المعرفي والاستشاري المستمر.",
-      cta: "التواصل مع MIZANIA",
-    },
-  },
 };
 
 const serviceIcons = [Landmark, GraduationCap, Briefcase, HandCoins];
@@ -1011,7 +990,7 @@ const investorIcons = [CircleDollarSign, Building2, BadgeCheck];
 const blogIcons = [Newspaper, BookOpen, Sparkles];
 const networkIcons = [ShieldCheck, GraduationCap, Landmark, BadgeCheck, BookOpen];
 
-const collaboratingExperts = {
+const collaboratingExperts: Record<LanguageCode, Array<any>> = {
   en: [
     {
       name: "Prof. Dr. Engku Rabiah Adawiah",
@@ -1058,7 +1037,7 @@ const collaboratingExperts = {
     {
       name: "Prof. Dr. Engku Rabiah Adawiah",
       role: "Эксперт по сотрудничеству",
-      focus: "Исламский рынок капитала, сукук, такафул, шариатский advisory",
+      focus: "Исламский рынок капитала, сукук, такафул, шариатское консультирование",
       bio: "Известный учёный в области исламских финансов с глубоким опытом в шариатском консультировании, исламском рынке капитала, такафуле и работе с регуляторной средой.",
       image: "https://as-salihin.com/wp-content/uploads/2024/11/assalihin_Org-Chart-2024_Board-Of-Syariah-Advisors-3_Prof-Dr-Engku-Rabiah-Adawiah.png",
       sourceUrl: "https://as-salihin.com/en/dr-engku-rabiah-adawiah/",
@@ -1066,16 +1045,16 @@ const collaboratingExperts = {
     {
       name: "Dr. Mohammad Mahbubi Ali",
       role: "Эксперт по сотрудничеству",
-      focus: "Исламский банкинг, Shariah governance, разработка продуктов, policy advisory",
-      bio: "Академический и отраслевой специалист с опытом в исламском банкинге, шариатском governance, регуляторном развитии, обучении и advisory initiatives.",
+      focus: "Исламский банкинг, шариатское управление, разработка продуктов, консультации по политике",
+      bio: "Академический и отраслевой специалист с опытом в исламском банкинге, шариатском управлении, регуляторном развитии, обучении и консультационных инициативах.",
       image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/11477.jpeg",
       sourceUrl: "https://www.iium.edu.my/directory/show/NC9vVmt6eTNMV3hLZ2RhSnBaNWpRZz09",
     },
     {
       name: "Prof. Dato’ Dr. Aznan Hasan",
       role: "Эксперт по сотрудничеству",
-      focus: "Структурирование исламских финансов, рынки капитала, Shariah governance",
-      bio: "Старший шариатский учёный с обширным опытом в структурировании исламских финансов, advisory work, governance и institutional development.",
+      focus: "Структурирование исламских финансов, рынки капитала, шариатское управление",
+      bio: "Старший шариатский учёный с обширным опытом в структурировании исламских финансов, консультационной работе, управлении и институциональном развитии.",
       image: "https://www.etiqa.com/wp-content/uploads/2022/03/Aznan-Hassan.png",
       sourceUrl: "https://www.etiqa.com/our-leaders-post/professor-dr-aznan-hasan/",
     },
@@ -1083,32 +1062,32 @@ const collaboratingExperts = {
       name: "Mezbah Uddin Ahmed",
       role: "Эксперт по сотрудничеству",
       focus: "Сукук, шариатский аудит, AAOIFI, исследования в исламских финансах",
-      bio: "Исследователь и advisory specialist, активно работающий в исламских финансах, сукук, шариатском аудите, AAOIFI и технических консультационных проектах.",
+      bio: "Исследователь и консультант, активно работающий в исламских финансах, сукук, шариатском аудите, AAOIFI и технических консультационных проектах.",
       image: "https://inceif.edu.my/wp-content/uploads/2024/08/Mezbah-Uddin-Ahmed-743x1024.png",
       sourceUrl: "https://inceif.edu.my/explore-inceif/about-us/academic-research-staff/mezbah-uddin-ahmed/",
     },
     {
       name: "Prof. Dr. Azman Mohd Noor",
       role: "Эксперт по сотрудничеству",
-      focus: "Исламское право сделок, такафул, вакф, шариатский advisory",
+      focus: "Исламское право сделок, такафул, вакф, шариатское консультирование",
       bio: "Опытный академик и шариатский консультант с сильной экспертизой в исламском праве сделок, такафуле, вакфе и прикладных вопросах исламских финансов.",
       image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/2902.jpeg",
       sourceUrl: "https://www.iium.edu.my/directory/show/Nlo2Qm9EMUVlUjlKWVRJWGJuTUlXQT09",
     },
   ],
-  lat: [
+  uz: [
     {
       name: "Prof. Dr. Engku Rabiah Adawiah",
       role: "Hamkor ekspert",
-      focus: "Islomiy kapital bozori, sukuk, takaful, Shariah advisory",
-      bio: "Islomiy moliya sohasida taniqli olima bo‘lib, Shariah advisory, islomiy kapital bozori, takaful va regulyatorlar bilan bog‘liq maslahat yo‘nalishlarida chuqur tajribaga ega.",
+      focus: "Islomiy kapital bozori, sukuk, takaful, shariat maslahati",
+      bio: "Islomiy moliya sohasida taniqli olima bo‘lib, shariat maslahati, islomiy kapital bozori, takaful va regulyatorlar bilan bog‘liq maslahat yo‘nalishlarida chuqur tajribaga ega.",
       image: "https://as-salihin.com/wp-content/uploads/2024/11/assalihin_Org-Chart-2024_Board-Of-Syariah-Advisors-3_Prof-Dr-Engku-Rabiah-Adawiah.png",
       sourceUrl: "https://as-salihin.com/en/dr-engku-rabiah-adawiah/",
     },
     {
       name: "Dr. Mohammad Mahbubi Ali",
       role: "Hamkor ekspert",
-      focus: "Islomiy bank ishi, Shariah governance, mahsulot ishlab chiqish, policy advisory",
+      focus: "Islomiy bank ishi, shariat boshqaruvi, mahsulot ishlab chiqish, siyosat bo‘yicha maslahat",
       bio: "Islomiy bank ishi, shariat boshqaruvi, regulyator rivoji, ta’lim va maslahat tashabbuslari bo‘yicha tajribaga ega akademik va sohaviy mutaxassis.",
       image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/11477.jpeg",
       sourceUrl: "https://www.iium.edu.my/directory/show/NC9vVmt6eTNMV3hLZ2RhSnBaNWpRZz09",
@@ -1116,108 +1095,24 @@ const collaboratingExperts = {
     {
       name: "Prof. Dato’ Dr. Aznan Hasan",
       role: "Hamkor ekspert",
-      focus: "Islomiy moliya strukturalari, kapital bozorlari, Shariah governance",
-      bio: "Islomiy moliya strukturalari, maslahat faoliyati, boshqaruv va institutsional rivojlanish bo‘yicha katta tajribaga ega katta shariat olimi.",
+      focus: "Islomiy moliya tuzilmalari, kapital bozorlari, shariat boshqaruvi",
+      bio: "Islomiy moliya tuzilmalari, maslahat faoliyati, boshqaruv va institutsional rivojlanish bo‘yicha katta tajribaga ega yirik shariat olimi.",
       image: "https://www.etiqa.com/wp-content/uploads/2022/03/Aznan-Hassan.png",
       sourceUrl: "https://www.etiqa.com/our-leaders-post/professor-dr-aznan-hasan/",
     },
     {
       name: "Mezbah Uddin Ahmed",
       role: "Hamkor ekspert",
-      focus: "Sukuk, Shariah audit, AAOIFI, islomiy moliya tadqiqotlari",
-      bio: "Islomiy moliya tadqiqotlari, sukuk, Shariah audit, AAOIFI va texnik maslahat loyihalarida faol ishlaydigan tadqiqotchi va advisory mutaxassis.",
+      focus: "Sukuk, shariat auditi, AAOIFI, islomiy moliya tadqiqotlari",
+      bio: "Islomiy moliya tadqiqotlari, sukuk, shariat auditi, AAOIFI va texnik maslahat loyihalarida faol ishlaydigan tadqiqotchi va maslahat mutaxassisi.",
       image: "https://inceif.edu.my/wp-content/uploads/2024/08/Mezbah-Uddin-Ahmed-743x1024.png",
       sourceUrl: "https://inceif.edu.my/explore-inceif/about-us/academic-research-staff/mezbah-uddin-ahmed/",
     },
     {
       name: "Prof. Dr. Azman Mohd Noor",
       role: "Hamkor ekspert",
-      focus: "Islomiy muomalot huquqi, takaful, waqf, Shariah advisory",
-      bio: "Islomiy muomalot huquqi, takaful, waqf va amaliy islomiy moliya masalalarida kuchli tajribaga ega tajribali akademik va shariat maslahatchisi.",
-      image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/2902.jpeg",
-      sourceUrl: "https://www.iium.edu.my/directory/show/Nlo2Qm9EMUVlUjlKWVRJWGJuTUlXQT09",
-    },
-  ],
-  kir: [
-    {
-      name: "Prof. Dr. Engku Rabiah Adawiah",
-      role: "Ҳамкор эксперт",
-      focus: "Исломий капитал бозори, сукук, такафул, Shariah advisory",
-      bio: "Исломий молия соҳасида таниқли олима бўлиб, Shariah advisory, исломий капитал бозори, такафул ва регуляторлар билан боғлиқ маслаҳат йўналишларида чуқур тажрибага эга.",
-      image: "https://as-salihin.com/wp-content/uploads/2024/11/assalihin_Org-Chart-2024_Board-Of-Syariah-Advisors-3_Prof-Dr-Engku-Rabiah-Adawiah.png",
-      sourceUrl: "https://as-salihin.com/en/dr-engku-rabiah-adawiah/",
-    },
-    {
-      name: "Dr. Mohammad Mahbubi Ali",
-      role: "Ҳамкор эксперт",
-      focus: "Исломий банк иши, Shariah governance, маҳсулот ишлаб чиқиш, policy advisory",
-      bio: "Исломий банк иши, шариат бошқаруви, регулятор ривожи, таълим ва маслаҳат ташаббуслари бўйича тажрибага эга академик ва соҳавий мутахассис.",
-      image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/11477.jpeg",
-      sourceUrl: "https://www.iium.edu.my/directory/show/NC9vVmt6eTNMV3hLZ2RhSnBaNWpRZz09",
-    },
-    {
-      name: "Prof. Dato’ Dr. Aznan Hasan",
-      role: "Ҳамкор эксперт",
-      focus: "Исломий молия структуралари, капитал бозорлари, Shariah governance",
-      bio: "Исломий молия структуралари, маслаҳат фаолияти, бошқарув ва институционал ривожланиш бўйича катта тажрибага эга катта шариат олими.",
-      image: "https://www.etiqa.com/wp-content/uploads/2022/03/Aznan-Hassan.png",
-      sourceUrl: "https://www.etiqa.com/our-leaders-post/professor-dr-aznan-hasan/",
-    },
-    {
-      name: "Mezbah Uddin Ahmed",
-      role: "Ҳамкор эксперт",
-      focus: "Сукук, Shariah audit, AAOIFI, исломий молия тадқиқотлари",
-      bio: "Исломий молия тадқиқотлари, сукук, Shariah audit, AAOIFI ва техник маслаҳат лойиҳаларида фаол ишлайдиган тадқиқотчи ва advisory мутахассис.",
-      image: "https://inceif.edu.my/wp-content/uploads/2024/08/Mezbah-Uddin-Ahmed-743x1024.png",
-      sourceUrl: "https://inceif.edu.my/explore-inceif/about-us/academic-research-staff/mezbah-uddin-ahmed/",
-    },
-    {
-      name: "Prof. Dr. Azman Mohd Noor",
-      role: "Ҳамкор эксперт",
-      focus: "Исломий муомалот ҳуқуқи, такафул, вақф, Shariah advisory",
-      bio: "Исломий муомалот ҳуқуқи, такафул, вақф ва амалий исломий молия масалаларида кучли тажрибага эга тажрибали академик ва шариат маслаҳатчиси.",
-      image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/2902.jpeg",
-      sourceUrl: "https://www.iium.edu.my/directory/show/Nlo2Qm9EMUVlUjlKWVRJWGJuTUlXQT09",
-    },
-  ],
-  ar: [
-    {
-      name: "Prof. Dr. Engku Rabiah Adawiah",
-      role: "خبير متعاون",
-      focus: "سوق رأس المال الإسلامي، الصكوك، التكافل، الاستشارات الشرعية",
-      bio: "عالمة بارزة في المالية الإسلامية تتمتع بخبرة عميقة في الاستشارات الشرعية وسوق رأس المال الإسلامي والتكافل والعمل الاستشاري المرتبط بالجهات التنظيمية.",
-      image: "https://as-salihin.com/wp-content/uploads/2024/11/assalihin_Org-Chart-2024_Board-Of-Syariah-Advisors-3_Prof-Dr-Engku-Rabiah-Adawiah.png",
-      sourceUrl: "https://as-salihin.com/en/dr-engku-rabiah-adawiah/",
-    },
-    {
-      name: "Dr. Mohammad Mahbubi Ali",
-      role: "خبير متعاون",
-      focus: "الصيرفة الإسلامية، حوكمة الشريعة، تطوير المنتجات، الاستشارات السياساتية",
-      bio: "أكاديمي ومتخصص صناعي لديه خبرة في الصيرفة الإسلامية وحوكمة الشريعة والتطوير التنظيمي والتدريب والمبادرات الاستشارية.",
-      image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/11477.jpeg",
-      sourceUrl: "https://www.iium.edu.my/directory/show/NC9vVmt6eTNMV3hLZ2RhSnBaNWpRZz09",
-    },
-    {
-      name: "Prof. Dato’ Dr. Aznan Hasan",
-      role: "خبير متعاون",
-      focus: "هيكلة التمويل الإسلامي، أسواق رأس المال، حوكمة الشريعة",
-      bio: "عالم شريعة بارز يتمتع بخبرة واسعة في هيكلة التمويل الإسلامي والعمل الاستشاري والحوكمة والتطوير المؤسسي.",
-      image: "https://www.etiqa.com/wp-content/uploads/2022/03/Aznan-Hassan.png",
-      sourceUrl: "https://www.etiqa.com/our-leaders-post/professor-dr-aznan-hasan/",
-    },
-    {
-      name: "Mezbah Uddin Ahmed",
-      role: "خبير متعاون",
-      focus: "الصكوك، التدقيق الشرعي، AAOIFI، بحوث المالية الإسلامية",
-      bio: "باحث ومتخصص استشاري ينشط في بحوث المالية الإسلامية والصكوك والتدقيق الشرعي وأعمال AAOIFI والمشاريع الاستشارية الفنية.",
-      image: "https://inceif.edu.my/wp-content/uploads/2024/08/Mezbah-Uddin-Ahmed-743x1024.png",
-      sourceUrl: "https://inceif.edu.my/explore-inceif/about-us/academic-research-staff/mezbah-uddin-ahmed/",
-    },
-    {
-      name: "Prof. Dr. Azman Mohd Noor",
-      role: "خبير متعاون",
-      focus: "فقه المعاملات، التكافل، الوقف، الاستشارات الشرعية",
-      bio: "أكاديمي ومستشار شرعي متمرس يتمتع بخلفية قوية في فقه المعاملات والتكافل والوقف والمسائل التطبيقية في المالية الإسلامية.",
+      focus: "Islomiy muomalot huquqi, takaful, vaqf, shariat maslahati",
+      bio: "Islomiy muomalot huquqi, takaful, vaqf va amaliy islomiy moliya masalalarida kuchli tajribaga ega tajribali akademik va shariat maslahatchisi.",
       image: "https://xcess.iium.edu.my/packages/card/printing/camera/uploads/original/2902.jpeg",
       sourceUrl: "https://www.iium.edu.my/directory/show/Nlo2Qm9EMUVlUjlKWVRJWGJuTUlXQT09",
     },
@@ -1259,7 +1154,7 @@ function LanguageSwitcher({ language, setLanguage }) {
 
 function MobileLanguageSwitcher({ language, setLanguage }) {
   return (
-    <div className="grid grid-cols-5 gap-2 pt-2">
+    <div className="grid grid-cols-3 gap-2 pt-2">
       {languages.map((lang) => (
         <button
           key={lang.code}
@@ -1709,12 +1604,12 @@ function MiniExpertPreview({ language, isRTL, setCurrentPage }) {
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className={`flex items-end justify-between gap-6 ${isRTL ? "flex-row-reverse" : ""}`}>
         <SectionTitle
-          eyebrow={language === "ru" ? "Эксперты" : language === "lat" ? "Ekspertlar" : "Experts"}
+          eyebrow={language === "ru" ? "Эксперты" : language === "uz" ? "Ekspertlar" : "Experts"}
           title={language === "ru" ? "Selected collaborating experts" : language === "uz" ? "Tanlangan hamkor ekspertlar" : "Selected collaborating experts"}
           description={language === "ru" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "uz" ? "Ishonch va nufuzni kuchaytirish uchun yengil va nafis formatda taqdim etilgan profillar." : "Profiles shown in a light, elegant format to strengthen trust and authority."}
           isRTL={isRTL}
         />
-        <Button variant="outline" className="rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("network")}>
+        <Button variant="outline" className="w-full sm:w-auto rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("network")}>
           {language === "ru" ? "Все эксперты" : language === "uz" ? "Barcha ekspertlar" : "View all"}
         </Button>
       </div>
@@ -1808,7 +1703,7 @@ function NetworkPage({ t, isRTL, setCurrentPage, language }) {
                 <p className="mt-3 text-[#566e66] leading-7">{expert.bio}</p>
                 <div className={`mt-5 flex ${isRTL ? "justify-end" : "justify-start"}`}>
                   <a href={expert.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full border border-[#12382f]/15 px-4 py-2 text-sm text-[#12382f] hover:bg-emerald-50">
-                    {language === "ru" ? "Источник профиля" : language === "ar" ? "مصدر الملف" : language === "kir" ? "Профил манбаси" : language === "uz" ? "Profil manbasi" : "Profile Source"} <ChevronRight className={`${isRTL ? "mr-1 rotate-180" : "ml-1"} h-4 w-4`} />
+                    {language === "ru" ? "Источник профиля" : language === "uz" ? "Profil manbasi" : "Profile Source"} <ChevronRight className={`${isRTL ? "mr-1 rotate-180" : "ml-1"} h-4 w-4`} />
                   </a>
                 </div>
               </CardContent>
@@ -1958,9 +1853,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
           ? "Стоимость зависит от формата услуги, объёма запроса и уровня сопровождения. Для точного расчёта лучше перейти в Contact и отправить краткий запрос."
           : language === "en"
           ? "Pricing depends on the service format, scope of work, and level of support. For an exact quote, please use the Contact page."
-          : language === "ar"
-          ? "تعتمد الأسعار على نوع الخدمة ونطاق العمل ومستوى المتابعة. للحصول على عرض دقيق، يُفضّل استخدام صفحة التواصل."
-          : "Narx xizmat turi, ish hajmi va hamroh bo‘lish darajasiga qarab belgilanadi. Aniq hisob учун Contact bo‘limiga o‘ting.",
+          : "Narx xizmat turi, ish hajmi va hamroh bo‘lish darajasiga qarab belgilanadi. Aniq hisob uchun Contact bo‘limiga o‘ting.",
         page: "contact",
       };
     }
@@ -1970,8 +1863,6 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
         ? "Я могу помочь по услугам, исламским финансам, курсам, инвесторам и контактам. Задайте вопрос более конкретно."
         : language === "en"
         ? "I can help with services, Islamic finance, courses, investors, and contact information. Please ask a more specific question."
-        : language === "ar"
-        ? "يمكنني المساعدة في الخدمات والتمويل الإسلامي والدورات والمستثمرين وبيانات التواصل. فضلاً اطرح سؤالك بشكل أدق."
         : "Men xizmatlar, islomiy moliya, kurslar, investorlar va aloqa bo‘yicha yordam bera olaman. Savolni biroz aniqroq yozing.",
       page: null,
     };
