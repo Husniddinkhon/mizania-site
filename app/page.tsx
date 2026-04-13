@@ -1956,7 +1956,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
     };
   }
 
-  function sendMessage(customText) {
+  function sendMessage(customText?: string) {
     const text = (customText ?? input).trim();
     if (!text) return;
     const userMsg: ChatMessage = { role: "user", text };
