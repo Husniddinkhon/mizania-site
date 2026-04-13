@@ -227,14 +227,14 @@ const uzLatin = {
     eyebrow: "Brend haqida",
     title: "Aniqlik, halollik va uzoq muddatli ishonchni qadrlaydiganlar uchun yaratilgan.",
     description:
-      "MIZANIA oddiy moliyaviy сайт эмас. У адолат, мувозанат, таълим ва стратегик ишончга қурилган premium platforma.",
+      "MIZANIA oddiy moliyaviy sayt emas. U adolat, muvozanat, ta’lim va strategik ishonchga qurilgan premium platforma.",
     points: [
       "Etikaga asoslangan premium pozitsiya",
       "Luxury-minimal vizual identitet",
       "Kuchli ta’lim va konsalting qiyofasi",
       "Global auditoriya va jiddiy hamkorlar uchun mos",
     ],
-    button: "Батафсил",
+    button: "Batafsil",
   },
   services: {
     eyebrow: "Xizmatlar",
@@ -253,7 +253,7 @@ const uzLatin = {
       },
       {
         title: "Strategik konsalting",
-        text: "Pozitsiyalash, taklif dizayni, biznes yo‘nalishi ва ишонч меъморчилиги.",
+        text: "Pozitsiyalash, taklif dizayni, biznes yo‘nalishi va ishonch me’morchiligi.",
       },
       {
         title: "Investorlar bilan ishlash",
@@ -263,11 +263,11 @@ const uzLatin = {
   },
   why: {
     eyebrow: "Nega MIZANIA",
-    title: "Shovqinsiz. Shablonsiz. Ishonchli ва ajralib turuvchi.",
+    title: "Shovqinsiz. Shablonsiz. Ishonchli va ajralib turuvchi.",
     description:
-      "Brend tili ataylab sokin va baland darajada qurilgan. U ortiqcha shovqinsiz ishonch, isrofsiz premiumlik ва bosimsiz ekspertiza beradi.",
+      "Brend tili ataylab sokin va baland darajada qurilgan. U ortiqcha shovqinsiz ishonch, isrofsiz premiumlik va bosimsiz ekspertiza beradi.",
     cards: [
-      ["Adolatga tayangan identitet", "Brend hikoyasi adolat, muvozanat va mas’uliyatga қурилган."],
+      ["Adolatga tayangan identitet", "Brend hikoyasi adolat, muvozanat va mas’uliyatga qurilgan."],
       ["Premium korporativ dizayn", "Global consulting va finance darajasidagi vizual tizim."],
       ["Lead generation tayyor", "CTA, aloqa nuqtalari va konversiyaga yo‘naltirilgan arxitektura."],
       ["AI yordamchi bilan", "Savol-javob, yo‘naltirish va xizmatlar bo‘yicha tezkor suhbat imkoniyati."],
@@ -332,7 +332,7 @@ const uzLatin = {
     eyebrow: "Suhbatni boshlang",
     title: "Keyingi moliyaviy qadamingizni kuchliroq asosda quring.",
     description:
-      "Sizga maslahat, ta’lim, strategik aniqlik yoki investorlar учун premium taqdimot kerak bo‘lsa, MIZANIA kuchli boshlanish nuqtasini beradi.",
+      "Sizga maslahat, ta’lim, strategik aniqlik yoki investorlar uchun premium taqdimot kerak bo‘lsa, MIZANIA kuchli boshlanish nuqtasini beradi.",
     button1: "Konsultatsiya so‘rash",
     button2: "Investorlar sahifasi",
     formTitle: "Lead generation forma",
@@ -363,7 +363,7 @@ const uzLatin = {
       },
       {
         q: "Qanday bog‘lanish mumkin?",
-        a: "Siz forma, email ёки телефон орқали MIZANIA bilan bog‘lanishingiz mumkin.",
+        a: "Siz forma, email yoki telefon orqali MIZANIA bilan bog‘lanishingiz mumkin.",
       },
     ],
   },
@@ -373,9 +373,9 @@ const uzLatin = {
     description:
       "Bu bo‘lim investorlarni MIZANIA falsafasi, boshqaruv yondashuvi va ishonchliligi bilan tanishtiradi.",
     blocks: [
-      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va etik yaxlitlik ҳам муҳим."],
+      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va etik yaxlitlik ham muhim."],
       ["Uzoq muddatli qiymat", "MIZANIA kapitalni mas’uliyat va barqaror foyda vositasi sifatida ko‘radi."],
-      ["Taqdimot sifati", "Premium визуал ва корпоратив darajadagi communication investor confidence’ni oshiradi."],
+      ["Taqdimot sifati", "Premium vizual va korporativ darajadagi communication investor confidence’ni oshiradi."],
     ],
     cta: "Investor so‘rovi",
   },
@@ -428,8 +428,8 @@ const uzLatin = {
     send: "Yuborish",
     hello:
       "Assalomu alaykum. Men MIZANIA AI yordamchisiman. Sizga xizmatlar, kurslar, islomiy moliya, investorlar va aloqa bo‘yicha yordam bera olaman.",
-    suggestions: ["Xizmatlaringiz қандай?", "Islomiy moliya haqida", "Kurslar bormi?", "Qanday bog‘lanaman?"],
-    lead: "Agar хоҳласангиз, men sizni Contact bo‘limiga yo‘naltiraman.",
+    suggestions: ["Xizmatlaringiz qanday?", "Islomiy moliya haqida", "Kurslar bormi?", "Qanday bog‘lanaman?"],
+    lead: "Agar xohlasangiz, men sizni Contact bo‘limiga yo‘naltiraman.",
   },
 };
 
@@ -1278,11 +1278,11 @@ const MIZANIA_LOGO = "/logo.png";
 function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
   return (
     <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-      <div className={`relative overflow-hidden rounded-[1.2rem] border border-[#d8cdb5] bg-white ${compact ? "h-14 w-14" : "h-20 w-20 sm:h-24 sm:w-24"} shadow-[0_12px_30px_rgba(16,48,40,0.10)]`}>
-        <img src={MIZANIA_LOGO} alt="MIZANIA logo" className="h-full w-full object-contain p-1" />
+      <div className={`relative overflow-hidden rounded-[1.2rem] border border-[#d8cdb5] bg-white ${compact ? "h-16 w-16" : "h-20 w-20 sm:h-24 sm:w-24"} shadow-[0_10px_24px_rgba(16,48,40,0.08)]`}>
+        <img src={MIZANIA_LOGO} alt="MIZANIA logo" className="h-full w-full object-contain p-1.5" />
       </div>
       <div className={isRTL ? "text-right" : "text-left"}>
-        <div className={`${compact ? "text-[1.45rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.22em] font-semibold text-[#12382f]`}>
+        <div className={`${compact ? "text-[1.55rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.22em] font-semibold text-[#12382f]`}>
           MIZANIA
         </div>
         <div className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-[#8b7744]">
@@ -1707,7 +1707,9 @@ function MiniExpertPreview({ language, isRTL, setCurrentPage }) {
           description={language === "ru" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "ar" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "kir" ? "Ишонч ва нуфузни кучайтириш учун енгил ва нафис форматда тақдим этилган профиллар." : language === "lat" ? "Ishonch va nufuzni kuchaytirish uchun yengil va nafis formatda taqdim etilgan profillar." : "Profiles shown in a light, elegant format to strengthen trust and authority."}
           isRTL={isRTL}
         />
-        <Button variant="outline" className="rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("network")}>View all</Button>
+        <Button variant="outline" className="rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("network")}>
+          {language === "ru" ? "Все эксперты" : language === "ar" ? "جميع الخبراء" : language === "kir" ? "Барча экспертлар" : language === "lat" ? "Barcha ekspertlar" : "View all"}
+        </Button>
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {experts.map((expert) => (
