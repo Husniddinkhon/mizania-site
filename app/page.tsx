@@ -1275,15 +1275,19 @@ function MobileLanguageSwitcher({ language, setLanguage }) {
 
 const MIZANIA_LOGO = "/logo.png";
 
-function BrandMark({ compact = false, isRTL = false }) {
+function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
   return (
-    <div className={`flex items-center ${isRTL ? "justify-end" : "justify-start"}`}>
-      <div className={`relative overflow-hidden rounded-[1.2rem] ${compact ? "h-16 w-16" : "h-24 w-24 sm:h-28 sm:w-28"} shadow-[0_12px_30px_rgba(16,48,40,0.14)]`}>
-        <img
-          src={MIZANIA_LOGO}
-          alt="MIZANIA logo"
-          className="h-full w-full object-contain"
-        />
+    <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+      <div className={`relative overflow-hidden rounded-[1.2rem] border border-[#d8cdb5] bg-white ${compact ? "h-14 w-14" : "h-20 w-20 sm:h-24 sm:w-24"} shadow-[0_12px_30px_rgba(16,48,40,0.10)]`}>
+        <img src={MIZANIA_LOGO} alt="MIZANIA logo" className="h-full w-full object-contain p-1" />
+      </div>
+      <div className={isRTL ? "text-right" : "text-left"}>
+        <div className={`${compact ? "text-[1.7rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.26em] font-semibold text-[#12382f]`}>
+          MIZANIA
+        </div>
+        <div className="mt-2 text-[11px] uppercase tracking-[0.28em] text-[#8b7744]">
+          {tagline}
+        </div>
       </div>
     </div>
   );
@@ -1291,19 +1295,19 @@ function BrandMark({ compact = false, isRTL = false }) {
 
 function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLabels, language, setLanguage, isRTL, setChatOpen }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#d8cdb5] bg-[#fbf8f1]/92 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#d8cdb5] bg-[#fbf8f1]/95 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`flex h-24 items-center justify-between gap-6 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex min-h-[92px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
           <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
-            <BrandMark compact isRTL={isRTL} />
+            <BrandMark compact isRTL={isRTL} tagline={t.brand.tagline} />
           </button>
 
-          <nav className="hidden xl:flex items-center gap-1 rounded-full border border-[#d8cdb5] bg-white/80 p-1 shadow-sm">
-            {pageLabels.map((page) => (
+          <nav className="hidden xl:flex items-center gap-1 rounded-full border border-[#d8cdb5] bg-white/85 p-1.5 shadow-sm">
+            {pageLabels.slice(0, 8).map((page) => (
               <button
                 key={page.key}
                 onClick={() => setCurrentPage(page.key)}
-                className={`rounded-full px-4 py-2 text-sm transition ${currentPage === page.key ? "bg-[#12382f] text-white" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
+                className={`rounded-full px-4 py-2.5 text-sm transition ${currentPage === page.key ? "bg-[#12382f] text-white shadow-sm" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
               >
                 {page.label}
               </button>
@@ -1312,10 +1316,15 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
 
           <div className={`hidden md:flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
             <LanguageSwitcher language={language} setLanguage={setLanguage} />
-            <Button variant="outline" className="rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setChatOpen(true)}>
-              <MessageSquare className="h-4 w-4 mr-2" /> {t.nav.ai}
-            </Button>
-            <Button className="rounded-full bg-[#cba95a] text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("contact")}>
+            <button
+              onClick={() => setChatOpen(true)}
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#cdbb91] bg-white text-[#12382f] transition hover:bg-[#f5efe1]"
+              aria-label={t.nav.ai}
+              title={t.nav.ai}
+            >
+              <MessageSquare className="h-4 w-4" />
+            </button>
+            <Button className="rounded-full bg-[#cba95a] px-6 py-3 text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("contact")}>
               {t.nav.speak}
             </Button>
           </div>
@@ -1324,8 +1333,9 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </div>
 
-        {mobileOpen ? (
+      {mobileOpen ? (
           <div className="xl:hidden pb-4">
             <div className="grid grid-cols-1 gap-2 rounded-3xl border border-[#d8cdb5] bg-white p-3 shadow-lg">
               {pageLabels.map((page) => (
@@ -1340,7 +1350,7 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
                   {page.label}
                 </button>
               ))}
-              <button onClick={() => setChatOpen(true)} className="rounded-2xl bg-[#f5efe1] px-4 py-3 text-left text-sm text-[#12382f]">
+              <button onClick={() => setChatOpen(true)} className={`rounded-2xl bg-[#f5efe1] px-4 py-3 text-sm text-[#12382f] ${isRTL ? "text-right" : "text-left"}`}>
                 {t.nav.ai}
               </button>
               <MobileLanguageSwitcher language={language} setLanguage={setLanguage} />
@@ -1358,43 +1368,43 @@ function Hero({ setCurrentPage, t, isRTL }) {
   return (
     <section className="relative overflow-hidden bg-[#f8f3e8]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,45,37,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(201,169,90,0.12),transparent_28%)]" />
-      <div className={`mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-8 lg:py-20 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
-        <div className={`rounded-[2rem] border border-[#d8cdb5] bg-white/65 p-8 shadow-sm backdrop-blur-sm ${isRTL ? "text-right" : "text-left"}`}>
-          <BrandMark isRTL={isRTL} />
+      <div className={`mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:px-8 lg:py-18 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
+        <div className={`rounded-[2rem] border border-[#d8cdb5] bg-white/72 p-8 shadow-sm backdrop-blur-sm lg:p-10 ${isRTL ? "text-right" : "text-left"}`}>
+          <BrandMark isRTL={isRTL} tagline={t.brand.tagline} />
           <div className={`mt-8 inline-flex items-center gap-2 rounded-full border border-[#d7c398] bg-[#fbf8f1] px-4 py-2 text-sm text-[#7b6a3d] ${isRTL ? "flex-row-reverse" : ""}`}>
             <BadgeCheck className="h-4 w-4" />
             {t.hero.badge}
           </div>
           <div className="mt-8 space-y-6">
-            <h1 className="max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight text-[#0d2d25] sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-3xl text-4xl font-semibold leading-[1.03] tracking-tight text-[#0d2d25] sm:text-5xl lg:text-[4.5rem]">
               {parts[0]}
               <span className="text-[#8c7440]">{highlight}</span>
               {parts[1] || ""}
             </h1>
-            <p className="max-w-xl text-lg leading-8 text-[#38544b]">{t.hero.description}</p>
+            <p className="max-w-2xl text-lg leading-8 text-[#38544b]">{t.hero.description}</p>
           </div>
           <div className={`mt-8 flex flex-col gap-4 sm:flex-row ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-            <Button className="rounded-full bg-[#cba95a] px-7 py-6 text-base text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("services")}>
+            <Button className="rounded-full bg-[#cba95a] px-8 py-6 text-base text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("services")}>
               {t.hero.cta1} {isRTL ? <ArrowRight className="mr-2 h-4 w-4 rotate-180" /> : <ArrowRight className="ml-2 h-4 w-4" />}
             </Button>
-            <Button variant="outline" className="rounded-full border-[#cdbb91] px-7 py-6 text-base text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("contact")}>
+            <Button variant="outline" className="rounded-full border-[#cdbb91] px-8 py-6 text-base text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("contact")}>
               {t.hero.cta2}
             </Button>
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-[#254238] bg-gradient-to-br from-[#0f3028] via-[#164337] to-[#0a211b] p-6 text-white shadow-[0_24px_60px_rgba(10,34,28,0.2)]">
-          <div className="grid h-full gap-6 lg:grid-rows-[auto_1fr_auto]">
+        <div className="rounded-[2rem] border border-[#254238] bg-gradient-to-br from-[#0f3028] via-[#164337] to-[#0a211b] p-6 text-white shadow-[0_24px_60px_rgba(10,34,28,0.18)] lg:p-5">
+          <div className="grid h-full gap-5 lg:grid-rows-[auto_1fr_auto]">
             <div className={`flex items-start justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className={isRTL ? "text-right" : "text-left"}>
                 <div className="text-sm uppercase tracking-[0.22em] text-amber-300/70">MIZANIA</div>
-                <div className="mt-2 text-2xl sm:text-3xl font-medium leading-tight">{t.hero.promise}</div>
+                <div className="mt-2 text-[2rem] font-medium leading-tight">{t.hero.promise}</div>
               </div>
-              <div className="relative h-24 w-24 overflow-hidden rounded-full border border-amber-300/20 bg-[radial-gradient(circle_at_30%_30%,rgba(232,204,127,0.35),transparent_35%),radial-gradient(circle_at_60%_70%,rgba(73,116,92,0.45),transparent_35%),linear-gradient(135deg,#284c40,#0f3028)] shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+              <div className="relative h-20 w-20 overflow-hidden rounded-full border border-amber-300/20 bg-[radial-gradient(circle_at_30%_30%,rgba(232,204,127,0.35),transparent_35%),radial-gradient(circle_at_60%_70%,rgba(73,116,92,0.45),transparent_35%),linear-gradient(135deg,#284c40,#0f3028)] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
                 <div className="absolute inset-2 rounded-full border border-white/10" />
               </div>
             </div>
-            <div className="grid gap-4">
+            <div className="grid gap-3">
               {[
                 [ShieldCheck, t.services.items[0].title],
                 [BookOpen, t.services.items[1].title],
@@ -1408,7 +1418,7 @@ function Hero({ setCurrentPage, t, isRTL }) {
             </div>
             <div className={`rounded-[1.75rem] border border-[#d9c27a]/20 bg-white/5 p-5 ${isRTL ? "text-right" : "text-left"}`}>
               <div className="text-xs uppercase tracking-[0.22em] text-[#d9c27a]">{t.hero.promise}</div>
-              <p className="mt-3 text-base leading-8 text-white/85">{t.hero.promiseText}</p>
+              <p className="mt-3 text-[15px] leading-8 text-white/85">{t.hero.promiseText}</p>
             </div>
           </div>
         </div>
