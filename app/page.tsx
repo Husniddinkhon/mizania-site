@@ -28,10 +28,64 @@ import {
   Newspaper,
   CircleDollarSign,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+function cn(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+function Card({ className = "", children }) {
+  return <div className={cn("bg-white", className)}>{children}</div>;
+}
+
+function CardContent({ className = "", children }) {
+  return <div className={className}>{children}</div>;
+}
+
+function CardHeader({ className = "", children }) {
+  return <div className={className}>{children}</div>;
+}
+
+function CardTitle({ className = "", children }) {
+  return <h3 className={className}>{children}</h3>;
+}
+
+function CardDescription({ className = "", children }) {
+  return <p className={className}>{children}</p>;
+}
+
+function Button({ className = "", variant = "default", size = "default", children, ...props }) {
+  const base = "inline-flex items-center justify-center transition font-medium disabled:opacity-50 disabled:pointer-events-none";
+  const variants = {
+    default: "bg-[#12382f] text-white hover:bg-[#0f2f27]",
+    outline: "border border-[#12382f]/20 bg-white text-[#12382f] hover:bg-emerald-50",
+  };
+  const sizes = {
+    default: "px-5 py-2.5 text-sm",
+    sm: "px-4 py-2 text-sm",
+  };
+  return (
+    <button className={cn(base, variants[variant] || variants.default, sizes[size] || sizes.default, className)} {...props}>
+      {children}
+    </button>
+  );
+}
+
+function Input({ className = "", ...props }) {
+  return (
+    <input
+      className={cn("w-full border border-emerald-950/10 bg-white px-4 py-3 text-sm text-[#12382f] outline-none ring-0 placeholder:text-slate-400", className)}
+      {...props}
+    />
+  );
+}
+
+function Textarea({ className = "", ...props }) {
+  return (
+    <textarea
+      className={cn("w-full border border-emerald-950/10 bg-white px-4 py-3 text-sm text-[#12382f] outline-none ring-0 placeholder:text-slate-400", className)}
+      {...props}
+    />
+  );
+}
 
 const languages = [
   { code: "en", label: "EN" },
