@@ -346,7 +346,7 @@ const uzLatin = {
     eyebrow: "Ko‘p so‘raladigan savollar",
     title: "Aniqlik ishonchni oshiradi va to‘siqlarni kamaytiradi.",
     description:
-      "Muhim savollarga олдиндан жавоб бериш ишончни оширади ва мурожаат эҳтимолини кучайтиради.",
+      "Muhim savollarga oldindan javob berish ishonchni oshiradi va murojaat ehtimolini kuchaytiradi.",
     button: "To‘liq FAQ",
     items: [
       {
@@ -421,7 +421,7 @@ const uzLatin = {
     explore: "Bo‘limlar",
     contact: "Aloqa",
     rights: "© 2026 MIZANIA. Barcha huquqlar himoyalangan.",
-    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi билан кучайтирилган платформа.",
+    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi bilan kuchaytirilgan platforma.",
   },
   ai: {
     title: "MIZANIA AI",
@@ -992,7 +992,7 @@ const dictionary: Record<LanguageCode, any> = {
       eyebrow: "Ekspert va maslahat hamkorlik tarmog‘i",
       title: "MIZANIA’ning bilim va maslahat salohiyatini kuchaytiruvchi tanlangan hamkor ekspertlar.",
       description: "MIZANIA halol moliya, islomiy moliya, ta’lim va maslahat yo‘nalishlarida tanlangan olimlar, tadqiqotchilar va sohaviy mutaxassislar bilan hamkorlik qiladi.",
-      note: "Profillar MIZANIAнинг bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
+      note: "Profillar MIZANIAning bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
       cta: "MIZANIA bilan bog‘lanish",
     },
   },
