@@ -1282,10 +1282,10 @@ function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
         <img src={MIZANIA_LOGO} alt="MIZANIA logo" className="h-full w-full object-contain p-1" />
       </div>
       <div className={isRTL ? "text-right" : "text-left"}>
-        <div className={`${compact ? "text-[1.7rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.26em] font-semibold text-[#12382f]`}>
+        <div className={`${compact ? "text-[1.45rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.22em] font-semibold text-[#12382f]`}>
           MIZANIA
         </div>
-        <div className="mt-2 text-[11px] uppercase tracking-[0.28em] text-[#8b7744]">
+        <div className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-[#8b7744]">
           {tagline}
         </div>
       </div>
@@ -1295,14 +1295,14 @@ function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
 
 function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLabels, language, setLanguage, isRTL, setChatOpen }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#d8cdb5] bg-[#fbf8f1]/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`flex min-h-[92px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex min-h-[96px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
           <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
             <BrandMark compact isRTL={isRTL} tagline={t.brand.tagline} />
           </button>
 
-          <nav className="hidden xl:flex items-center gap-1 rounded-full border border-[#d8cdb5] bg-white/85 p-1.5 shadow-sm">
+          <nav className="hidden xl:flex items-center gap-1 rounded-full border border-[#d8cdb5] bg-white px-2 py-1.5 shadow-sm">
             {pageLabels.slice(0, 8).map((page) => (
               <button
                 key={page.key}
@@ -1314,17 +1314,17 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
             ))}
           </nav>
 
-          <div className={`hidden md:flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`hidden md:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
             <LanguageSwitcher language={language} setLanguage={setLanguage} />
             <button
               onClick={() => setChatOpen(true)}
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#cdbb91] bg-white text-[#12382f] transition hover:bg-[#f5efe1]"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cdbb91] bg-white text-[#12382f] transition hover:bg-[#f5efe1]"
               aria-label={t.nav.ai}
               title={t.nav.ai}
             >
               <MessageSquare className="h-4 w-4" />
             </button>
-            <Button className="rounded-full bg-[#cba95a] px-6 py-3 text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("contact")}>
+            <Button className="rounded-full bg-[#cba95a] px-5 py-3 text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("contact")}>
               {t.nav.speak}
             </Button>
           </div>
@@ -1366,10 +1366,10 @@ function Hero({ setCurrentPage, t, isRTL }) {
   const highlight = t.hero.highlight;
   const parts = t.hero.title.split(highlight);
   return (
-    <section className="relative overflow-hidden bg-[#f8f3e8]">
+    <section className="relative overflow-hidden bg-[#f8f3e8] pt-6 lg:pt-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,45,37,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(201,169,90,0.12),transparent_28%)]" />
-      <div className={`mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:px-8 lg:py-18 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
-        <div className={`rounded-[2rem] border border-[#d8cdb5] bg-white/72 p-8 shadow-sm backdrop-blur-sm lg:p-10 ${isRTL ? "text-right" : "text-left"}`}>
+      <div className={`mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:px-8 lg:py-16 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
+        <div className={`rounded-[2rem] border border-[#d8cdb5] bg-white p-8 shadow-[0_16px_40px_rgba(16,48,40,0.06)] lg:p-10 ${isRTL ? "text-right" : "text-left"}`}>
           <BrandMark isRTL={isRTL} tagline={t.brand.tagline} />
           <div className={`mt-8 inline-flex items-center gap-2 rounded-full border border-[#d7c398] bg-[#fbf8f1] px-4 py-2 text-sm text-[#7b6a3d] ${isRTL ? "flex-row-reverse" : ""}`}>
             <BadgeCheck className="h-4 w-4" />
