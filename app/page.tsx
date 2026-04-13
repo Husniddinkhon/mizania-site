@@ -1604,9 +1604,9 @@ type LeadDraft = {
 
 function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpen, leadDraft, setLeadDraft }) {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([{ role: "assistant", text: t.ai.hello }]);
-  const [leadStep, setLeadStep] = useState(null);
-  const messagesContainerRef = React.useRef(null);
+  const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: t.ai.hello }]);
+  const [leadStep, setLeadStep] = useState<"name" | "phone" | "company" | "message" | null>(null);
+  const messagesContainerRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
     const savedMessages = typeof window !== "undefined" ? sessionStorage.getItem(`mizania_ai_messages_${language}`) : null;
