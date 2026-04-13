@@ -1294,10 +1294,19 @@ function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
 }
 
 function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLabels, language, setLanguage, isRTL, setChatOpen }) {
+  const getNavLabel = (page) => {
+    if (page.key !== "network") return page.label;
+    if (language === "ru") return "Эксперты";
+    if (language === "kir") return "Экспертлар";
+    if (language === "lat") return "Ekspertlar";
+    if (language === "ar") return "الخبراء";
+    return "Experts";
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`flex min-h-[96px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className={`flex min-h-[92px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
           <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
             <BrandMark compact isRTL={isRTL} tagline={t.brand.tagline} />
           </button>
@@ -1307,9 +1316,9 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
               <button
                 key={page.key}
                 onClick={() => setCurrentPage(page.key)}
-                className={`rounded-full px-4 py-2.5 text-sm transition ${currentPage === page.key ? "bg-[#12382f] text-white shadow-sm" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
+                className={`rounded-full px-3.5 py-2.5 text-[13px] transition ${currentPage === page.key ? "bg-[#12382f] text-white shadow-sm" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
               >
-                {page.label}
+                {getNavLabel(page)}
               </button>
             ))}
           </nav>
@@ -1400,25 +1409,25 @@ function Hero({ setCurrentPage, t, isRTL }) {
             <div className={`flex items-start justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className={isRTL ? "text-right" : "text-left"}>
                 <div className="text-sm uppercase tracking-[0.22em] text-amber-300/70">MIZANIA</div>
-                <div className="mt-2 text-[2rem] font-medium leading-tight">{t.hero.promise}</div>
+                <div className="mt-2 text-[1.7rem] font-medium leading-tight">{t.hero.promise}</div>
               </div>
               <div className="relative h-20 w-20 overflow-hidden rounded-full border border-amber-300/20 bg-[radial-gradient(circle_at_30%_30%,rgba(232,204,127,0.35),transparent_35%),radial-gradient(circle_at_60%_70%,rgba(73,116,92,0.45),transparent_35%),linear-gradient(135deg,#284c40,#0f3028)] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
                 <div className="absolute inset-2 rounded-full border border-white/10" />
               </div>
             </div>
-            <div className="grid gap-3">
+            <div className="grid gap-2.5">
               {[
                 [ShieldCheck, t.services.items[0].title],
                 [BookOpen, t.services.items[1].title],
                 [Users, t.services.items[3].title],
               ].map(([Icon, label]) => (
-                <div key={label} className={`flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
+                <div key={label} className={`flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-3.5 ${isRTL ? "flex-row-reverse text-right" : ""}`}>
                   <div className="rounded-2xl bg-[#f2e1ac]/10 p-3"><Icon className="h-5 w-5 text-[#e0c66f]" /></div>
                   <div className="text-base text-white/90">{label}</div>
                 </div>
               ))}
             </div>
-            <div className={`rounded-[1.75rem] border border-[#d9c27a]/20 bg-white/5 p-5 ${isRTL ? "text-right" : "text-left"}`}>
+            <div className={`rounded-[1.75rem] border border-[#d9c27a]/20 bg-white/5 p-4.5 ${isRTL ? "text-right" : "text-left"}`}>
               <div className="text-xs uppercase tracking-[0.22em] text-[#d9c27a]">{t.hero.promise}</div>
               <p className="mt-3 text-[15px] leading-8 text-white/85">{t.hero.promiseText}</p>
             </div>
