@@ -92,14 +92,12 @@ function Textarea({ className = "", ...props }) {
 const languages = [
   { code: "en", label: "EN" },
   { code: "ru", label: "RU" },
-  { code: "kir", label: "КИР" },
-  { code: "lat", label: "LAT" },
-  { code: "ar", label: "AR" },
+  { code: "uz", label: "UZ" },
 ] as const;
 
 type LanguageCode = (typeof languages)[number]["code"];
 
-const rtlLanguages = ["ar"];
+const rtlLanguages = [];
 
 function latinUzbekToCyrillic(text) {
   if (!text) return text;
@@ -303,28 +301,28 @@ const uzLatin = {
     ],
   },
   testimonials: {
-    eyebrow: "Fikrlar",
-    title: "Chuqurlik, intizom va ishonch bilan shakllangan obro‘.",
+    eyebrow: "Yondashuv",
+    title: "MIZANIA bilan ishlash aniqlik, tartib va ishonchga tayangan yondashuvga qurilgan.",
     description:
-      "Quyidagi namunaviy fikrlar premium moliya va konsalting brendining ohangini ko‘rsatadi.",
+      "Bu bo‘lim MIZANIA qanday ishlashi, mijozga qanday yondashishi va hamkorlikni qanday olib borishini qisqacha ko‘rsatadi.",
     items: [
       {
-        name: "Xususiy investor",
-        role: "Ishonchli kapital hamkori",
+        name: "Aniqlik",
+        role: "Har bir bosqich tushunarli",
         quote:
-          "MIZANIA sokin professionallikni noyob ma’naviy aniqlik bilan uyg‘unlashtiradi. Brend global va ishonchli ko‘rinadi.",
+          "Har bir so‘rov maqsad, ish hajmi va kutilayotgan natija aniq belgilangan holda ko‘rib chiqiladi.",
       },
       {
-        name: "Asoschi mijoz",
-        role: "Biznes egasi",
+        name: "Ishonch",
+        role: "Munosabatning asosi",
         quote:
-          "Faqat moliyaviy yo‘l-yo‘riq emas, balki har bir tavsiyadagi tartib, ishonch va muvozanat ta’sir qildi.",
+          "Muloqotda shaffoflik, va’dalarda mas’uliyat va har bir tavsiyada ishonch ustuvor bo‘ladi.",
       },
       {
-        name: "Kurs ishtirokchisi",
-        role: "Tinglovchi",
+        name: "Sifat",
+        role: "Professional taqdimot",
         quote:
-          "Ta’lim premium va amaliy tuyuldi. Murakkab mavzular chuqurligini yo‘qotmasdan tushunarli bo‘ldi.",
+          "Mazmun, tartib va taqdimot birgalikda yuqori darajadagi professional taassurot qoldirishi kerak.",
       },
     ],
   },
@@ -346,7 +344,7 @@ const uzLatin = {
     eyebrow: "Ko‘p so‘raladigan savollar",
     title: "Aniqlik ishonchni oshiradi va to‘siqlarni kamaytiradi.",
     description:
-      "Muhim savollarga олдиндан жавоб бериш ишончни оширади ва мурожаат эҳтимолини кучайтиради.",
+      "Muhim savollarga oldindan javob berish ishonchni oshiradi va murojaat ehtimolini kuchaytiradi.",
     button: "To‘liq FAQ",
     items: [
       {
@@ -421,7 +419,7 @@ const uzLatin = {
     explore: "Bo‘limlar",
     contact: "Aloqa",
     rights: "© 2026 MIZANIA. Barcha huquqlar himoyalangan.",
-    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi билан кучайтирилган платформа.",
+    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi bilan kuchaytirilgan platforma.",
   },
   ai: {
     title: "MIZANIA AI",
@@ -986,13 +984,13 @@ const dictionary: Record<LanguageCode, any> = {
       cta: "MIZANIA билан боғланиш",
     },
   },
-  lat: {
+  uz: {
     ...uzLatin,
     network: {
       eyebrow: "Ekspert va maslahat hamkorlik tarmog‘i",
       title: "MIZANIA’ning bilim va maslahat salohiyatini kuchaytiruvchi tanlangan hamkor ekspertlar.",
       description: "MIZANIA halol moliya, islomiy moliya, ta’lim va maslahat yo‘nalishlarida tanlangan olimlar, tadqiqotchilar va sohaviy mutaxassislar bilan hamkorlik qiladi.",
-      note: "Profillar MIZANIAнинг bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
+      note: "Profillar MIZANIAning bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
       cta: "MIZANIA bilan bog‘lanish",
     },
   },
@@ -1299,9 +1297,7 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
   const getNavLabel = (page) => {
     if (page.key !== "network") return page.label;
     if (language === "ru") return "Эксперты";
-    if (language === "kir") return "Экспертлар";
-    if (language === "lat") return "Ekspertlar";
-    if (language === "ar") return "الخبراء";
+    if (language === "uz") return "Ekspertlar";
     return "Experts";
   };
 
@@ -1713,13 +1709,13 @@ function MiniExpertPreview({ language, isRTL, setCurrentPage }) {
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className={`flex items-end justify-between gap-6 ${isRTL ? "flex-row-reverse" : ""}`}>
         <SectionTitle
-          eyebrow={language === "ru" ? "Эксперты" : language === "ar" ? "الخبراء" : language === "kir" ? "Экспертлар" : language === "lat" ? "Ekspertlar" : "Experts"}
-          title={language === "ru" ? "Selected collaborating experts" : language === "ar" ? "Selected collaborating experts" : language === "kir" ? "Танланган ҳамкор экспертлар" : language === "lat" ? "Tanlangan hamkor ekspertlar" : "Selected collaborating experts"}
-          description={language === "ru" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "ar" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "kir" ? "Ишонч ва нуфузни кучайтириш учун енгил ва нафис форматда тақдим этилган профиллар." : language === "lat" ? "Ishonch va nufuzni kuchaytirish uchun yengil va nafis formatda taqdim etilgan profillar." : "Profiles shown in a light, elegant format to strengthen trust and authority."}
+          eyebrow={language === "ru" ? "Эксперты" : language === "lat" ? "Ekspertlar" : "Experts"}
+          title={language === "ru" ? "Selected collaborating experts" : language === "uz" ? "Tanlangan hamkor ekspertlar" : "Selected collaborating experts"}
+          description={language === "ru" ? "Profiles shown in a light, elegant format to strengthen trust and authority." : language === "uz" ? "Ishonch va nufuzni kuchaytirish uchun yengil va nafis formatda taqdim etilgan profillar." : "Profiles shown in a light, elegant format to strengthen trust and authority."}
           isRTL={isRTL}
         />
         <Button variant="outline" className="rounded-full border-[#cdbb91] text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("network")}>
-          {language === "ru" ? "Все эксперты" : language === "ar" ? "جميع الخبراء" : language === "kir" ? "Барча экспертлар" : language === "lat" ? "Barcha ekspertlar" : "View all"}
+          {language === "ru" ? "Все эксперты" : language === "uz" ? "Barcha ekspertlar" : "View all"}
         </Button>
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -1812,7 +1808,7 @@ function NetworkPage({ t, isRTL, setCurrentPage, language }) {
                 <p className="mt-3 text-[#566e66] leading-7">{expert.bio}</p>
                 <div className={`mt-5 flex ${isRTL ? "justify-end" : "justify-start"}`}>
                   <a href={expert.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-full border border-[#12382f]/15 px-4 py-2 text-sm text-[#12382f] hover:bg-emerald-50">
-                    {language === "ru" ? "Источник профиля" : language === "ar" ? "مصدر الملف" : language === "kir" ? "Профил манбаси" : language === "lat" ? "Profil manbasi" : "Profile Source"} <ChevronRight className={`${isRTL ? "mr-1 rotate-180" : "ml-1"} h-4 w-4`} />
+                    {language === "ru" ? "Источник профиля" : language === "ar" ? "مصدر الملف" : language === "kir" ? "Профил манбаси" : language === "uz" ? "Profil manbasi" : "Profile Source"} <ChevronRight className={`${isRTL ? "mr-1 rotate-180" : "ml-1"} h-4 w-4`} />
                   </a>
                 </div>
               </CardContent>
@@ -2068,7 +2064,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
 export default function MIZANIAWebsiteV2() {
   const [currentPage, setCurrentPage] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState<LanguageCode>("kir");
+  const [language, setLanguage] = useState<LanguageCode>("uz");
   const [chatOpen, setChatOpen] = useState(false);
 
   const t = dictionary[language];
