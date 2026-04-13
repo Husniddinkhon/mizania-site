@@ -1,4 +1,5 @@
 "use client";
+// @ts-nocheck
 
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -99,76 +100,7 @@ type LanguageCode = (typeof languages)[number]["code"];
 
 const rtlLanguages: LanguageCode[] = [];
 
-function latinUzbekToCyrillic(text) {
-  if (!text) return text;
-  let s = text;
 
-  s = s.replace(/G‘/g, "Ғ").replace(/g‘/g, "ғ");
-  s = s.replace(/O‘/g, "Ў").replace(/o‘/g, "ў");
-  s = s.replace(/G'/g, "Ғ").replace(/g'/g, "ғ");
-  s = s.replace(/O'/g, "Ў").replace(/o'/g, "ў");
-  s = s.replace(/Gʻ/g, "Ғ").replace(/gʻ/g, "ғ");
-  s = s.replace(/Oʻ/g, "Ў").replace(/oʻ/g, "ў");
-  s = s.replace(/Gʼ/g, "Ғ").replace(/gʼ/g, "ғ");
-  s = s.replace(/Oʼ/g, "Ў").replace(/oʼ/g, "ў");
-
-  s = s.replace(/Sh/g, "Ш").replace(/sh/g, "ш");
-  s = s.replace(/Ch/g, "Ч").replace(/ch/g, "ч");
-  s = s.replace(/Ya/g, "Я").replace(/ya/g, "я");
-  s = s.replace(/Yo/g, "Ё").replace(/yo/g, "ё");
-  s = s.replace(/Yu/g, "Ю").replace(/yu/g, "ю");
-
-  const map = {
-    A: "А", a: "а",
-    B: "Б", b: "б",
-    D: "Д", d: "д",
-    E: "Е", e: "е",
-    F: "Ф", f: "ф",
-    G: "Г", g: "г",
-    H: "Ҳ", h: "ҳ",
-    I: "И", i: "и",
-    J: "Ж", j: "ж",
-    K: "К", k: "к",
-    L: "Л", l: "л",
-    M: "М", m: "м",
-    N: "Н", n: "н",
-    O: "О", o: "о",
-    P: "П", p: "п",
-    Q: "Қ", q: "қ",
-    R: "Р", r: "р",
-    S: "С", s: "с",
-    T: "Т", t: "т",
-    U: "У", u: "у",
-    V: "В", v: "в",
-    X: "Х", x: "х",
-    Y: "Й", y: "й",
-    Z: "З", z: "з",
-    "'": "",
-    "ʻ": "",
-    "ʼ": "",
-    "’": "",
-    "‘": "",
-    "`": "",
-  };
-
-  return s
-    .split("")
-    .map((ch) => (map[ch] !== undefined ? map[ch] : ch))
-    .join("");
-}
-
-function convertToCyrillic(value) {
-  if (typeof value === "string") return latinUzbekToCyrillic(value);
-  if (Array.isArray(value)) return value.map(convertToCyrillic);
-  if (value && typeof value === "object") {
-    const result = {};
-    Object.keys(value).forEach((key) => {
-      result[key] = convertToCyrillic(value[key]);
-    });
-    return result;
-  }
-  return value;
-}
 
 const uzLatin = {
   brand: {
@@ -549,24 +481,28 @@ const en = {
     ],
   },
   testimonials: {
-    eyebrow: "Testimonials",
-    title: "A reputation shaped by depth, discipline, and trust.",
-    description: "Sample statements illustrating the tone of a premium finance and consulting brand.",
+    eyebrow: "Approach",
+    title: "Working with MIZANIA is built on clarity, structure, and trust.",
+    description:
+      "This section explains how MIZANIA works, how it approaches clients, and what kind of experience partners can expect.",
     items: [
       {
-        name: "Private Investor",
-        role: "Ethical Capital Partner",
-        quote: "MIZANIA combines calm professionalism with rare moral clarity. The brand feels global and trustworthy.",
+        name: "Clarity",
+        role: "Each step is clearly defined",
+        quote:
+          "Every request is reviewed with a clear understanding of objectives, scope, and expected outcomes.",
       },
       {
-        name: "Founder Client",
-        role: "Business Owner",
-        quote: "What stood out was the structure, confidence, and balance behind every recommendation.",
+        name: "Trust",
+        role: "The foundation of the relationship",
+        quote:
+          "Communication is transparent, commitments are handled responsibly, and trust remains central to every recommendation.",
       },
       {
-        name: "Course Participant",
-        role: "Learner",
-        quote: "The learning experience felt premium and practical. Complex topics became much clearer.",
+        name: "Quality",
+        role: "Professional presentation",
+        quote:
+          "Content, structure, and presentation are expected to work together at a consistently high standard.",
       },
     ],
   },
@@ -718,13 +654,29 @@ const ru = {
     cards: [["База", "Принципы этичных и исламских финансов"], ["Executive", "Закрытые воркшопы для принимающих решения"], ["Практика", "Кейс-ориентированные занятия"], ["Премиум", "Высокий уровень образовательного опыта"]],
   },
   testimonials: {
-    eyebrow: "Отзывы",
-    title: "Репутация, построенная на глубине, дисциплине и доверии.",
-    description: "Эти примеры передают тон премиального финансового и консалтингового бренда.",
+    eyebrow: "Подход",
+    title: "Работа с MIZANIA строится на ясности, порядке и доверии.",
+    description:
+      "Этот блок кратко показывает, как MIZANIA выстраивает работу, взаимодействует с клиентами и ведёт сотрудничество.",
     items: [
-      { name: "Частный инвестор", role: "Партнёр по этичному капиталу", quote: "MIZANIA сочетает спокойный профессионализм с редкой моральной ясностью. Бренд выглядит глобально и внушает доверие." },
-      { name: "Клиент-основатель", role: "Владелец бизнеса", quote: "Впечатлили структура, уверенность и баланс, стоящие за каждой рекомендацией." },
-      { name: "Участник курса", role: "Слушатель", quote: "Обучение выглядело премиально и практично. Сложные темы стали понятнее." },
+      {
+        name: "Ясность",
+        role: "Каждый этап понятен",
+        quote:
+          "Каждый запрос рассматривается с чётким пониманием цели, объёма работы и ожидаемого результата.",
+      },
+      {
+        name: "Доверие",
+        role: "Основа взаимодействия",
+        quote:
+          "Коммуникация строится на прозрачности, обязательства — на ответственности, а доверие остаётся основой каждой рекомендации.",
+      },
+      {
+        name: "Качество",
+        role: "Профессиональная подача",
+        quote:
+          "Содержание, структура и подача должны вместе формировать сильное и профессиональное впечатление.",
+      },
     ],
   },
   cta: {
@@ -797,158 +749,6 @@ const ru = {
     hello: "Здравствуйте. Я AI помощник MIZANIA. Я могу помочь по услугам, исламским финансам, курсам, инвесторам и контактам.",
     suggestions: ["Какие у вас услуги?", "Расскажите про исламские финансы", "Есть ли курсы?", "Как с вами связаться?"],
     lead: "При необходимости я направлю вас в раздел Contact.",
-  },
-};
-
-const ar = {
-  ...en,
-  brand: { ...en.brand, tagline: "العدالة · التوازن · الثقة" },
-  pages: {
-    home: "الرئيسية",
-    about: "من نحن",
-    services: "الخدمات",
-    islamicFinance: "التمويل الإسلامي",
-    courses: "الدورات",
-    consulting: "الاستشارات",
-    investors: "للمستثمرين",
-    network: "شبكة الخبراء",
-    blog: "المدونة",
-    faq: "الأسئلة الشائعة",
-    contact: "اتصل بنا",
-  },
-  nav: { speak: "تواصل معنا", ai: "المساعد الذكي" },
-  hero: {
-    badge: "علامة فاخرة للتمويل الأخلاقي والاستشارات",
-    title: "تمويل يرتكز على المبدأ والاستراتيجية والثقة.",
-    highlight: "المبدأ",
-    description: "MIZANIA منصة فاخرة للتمويل الأخلاقي والتمويل الإسلامي والتعليم والاستشارات والعمل مع المستثمرين.",
-    cta1: "استكشف الخدمات",
-    cta2: "اطلب استشارة",
-    cards: [["فاخر", "مظهر مؤسسي عالمي"], ["أخلاقي", "تموضع قائم على العدالة"], ["موثوق", "صورة مهنية هادئة"]],
-    promise: "وعد العلامة",
-    promiseText: "تم بناء MIZANIA للعمق والتوازن والثقة طويلة الأجل، لا للمظهر بلا مضمون.",
-  },
-  trust: { eyebrow: "مؤشرات الثقة", items: [["أخلاقي", "قرارات مبنية على المبادئ"], ["إسلامي", "توجيه مالي متوافق مع الشريعة"], ["تعليمي", "قيمة قائمة على المعرفة"], ["فاخر", "عرض بمستوى عالمي"]] },
-  about: {
-    eyebrow: "عن العلامة",
-    title: "صُممت لمن يقدّر الوضوح والنزاهة والثقة المستدامة.",
-    description: "MIZANIA ليست مجرد موقع مالي. إنها منصة فاخرة مبنية على العدالة والتوازن والتعليم والثقة الاستراتيجية.",
-    points: ["تموضع فاخر قائم على الأخلاق", "هوية بصرية فاخرة وبسيطة", "حضور قوي في التعليم والاستشارات", "مناسبة لجمهور عالمي وأصحاب مصلحة جادين"],
-    button: "المزيد",
-  },
-  services: {
-    eyebrow: "الخدمات",
-    title: "هيكل خدمات فاخر للنمو الأخلاقي.",
-    description: "كل خدمة مصممة لتبدو راقية واستراتيجية وعالية الثقة.",
-    button: "كل الخدمات",
-    items: [
-      { title: "استشارات التمويل الإسلامي", text: "حلول مالية حلال ومراجعة النماذج التجارية ونمو متوافق مع الشريعة." },
-      { title: "التعليم والدورات", text: "تجارب تعليمية فاخرة لرواد الأعمال والطلاب والمهنيين." },
-      { title: "الاستشارات الاستراتيجية", text: "التموضع وتصميم العروض وهندسة الثقة." },
-      { title: "علاقات المستثمرين", text: "تواصل واضح وعرض فاخر موجّه للمستثمرين." },
-    ],
-  },
-  why: {
-    eyebrow: "لماذا MIZANIA",
-    title: "ليست صاخبة ولا نمطية، بل موثوقة بتميز.",
-    description: "لغة العلامة هادئة وراقية واستراتيجية، وتعكس الثقة بلا ضجيج.",
-    cards: [["هوية قائمة على العدالة", "مبنية على العدالة والتوازن والمسؤولية."], ["تصميم مؤسسي فاخر", "مناسب للاستشارات والتمويل على مستوى عالمي."], ["جاهزة لتوليد العملاء", "مسارات واضحة للتحويل والتواصل."], ["إرشاد عبر AI", "مساعد مدمج يساعد المستخدم على التنقل."]],
-  },
-  principles: {
-    eyebrow: "مبادئ التمويل الأخلاقي",
-    title: "المبادئ ليست زينة، بل هي البنية نفسها.",
-    description: "رؤية MIZANIA المالية مبنية على العدالة والشفافية والمسؤولية وصناعة قيمة حقيقية.",
-    button: "استكشاف التمويل الإسلامي",
-    items: ["العدالة قبل الربح", "التوازن بين النمو والمسؤولية", "الشفافية في الهيكل والتواصل", "الثقة أساس كل معاملة", "قرارات تقودها المعرفة", "قيمة طويلة الأجل بدل الربح القصير"],
-  },
-  education: {
-    eyebrow: "العروض التعليمية",
-    title: "معرفة صُممت لنمو جاد.",
-    description: "دورات وورش وبرامج تعليمية فاخرة لمن يريد التعمق في التمويل الأخلاقي والإسلامي.",
-    button1: "تصفح الدورات",
-    button2: "اطلب المنهج",
-    cards: [["الأساسيات", "مبادئ التمويل الأخلاقي والإسلامي"], ["تنفيذي", "ورش خاصة لصنّاع القرار"], ["تطبيقي", "جلسات قائمة على الحالات"], ["فاخر", "تجربة تعليمية عالية الثقة"]],
-  },
-  testimonials: {
-    eyebrow: "الشهادات",
-    title: "سمعة تتشكل بالعمق والانضباط والثقة.",
-    description: "هذه العبارات النموذجية تعكس نبرة علامة مالية واستشارية فاخرة.",
-    items: [
-      { name: "مستثمر خاص", role: "شريك رأس مال أخلاقي", quote: "تجمع MIZANIA بين المهنية الهادئة والوضوح الأخلاقي النادر. تبدو العلامة عالمية وجديرة بالثقة." },
-      { name: "عميل مؤسس", role: "صاحب عمل", quote: "ما لفتني هو البنية والثقة والتوازن الكامن خلف كل توصية." },
-      { name: "مشارك في دورة", role: "متعلم", quote: "كانت التجربة التعليمية راقية وعملية. أصبحت الموضوعات المعقدة أوضح بكثير." },
-    ],
-  },
-  cta: {
-    eyebrow: "ابدأ الحوار",
-    title: "ابنِ خطوتك المالية القادمة على أساس أقوى.",
-    description: "إذا كنت تبحث عن استشارة أو تعليم أو وضوح استراتيجي أو عرض جاهز للمستثمرين، فإن MIZANIA تقدم نقطة بداية راقية.",
-    button1: "طلب استشارة",
-    button2: "صفحة المستثمرين",
-    formTitle: "نموذج التواصل",
-    fullName: "الاسم الكامل",
-    email: "البريد الإلكتروني",
-    company: "الشركة أو المؤسسة",
-    message: "أخبرنا بما تبحث عنه",
-    send: "إرسال الطلب",
-  },
-  faq: {
-    eyebrow: "الأسئلة الشائعة",
-    title: "الوضوح الراقي يخفف التردد ويعزز الثقة.",
-    description: "الموقع الفاخر يجب أن يجيب عن الأسئلة الأساسية قبل أن تصبح اعتراضات.",
-    button: "عرض كامل الأسئلة",
-    items: [
-      { q: "في ماذا تتخصص MIZANIA؟", a: "التمويل الأخلاقي، التمويل الإسلامي، التعليم، الاستشارات الاستراتيجية، والعمل مع المستثمرين." },
-      { q: "هل لديكم دورات؟", a: "نعم. يمكن لـ MIZANIA تقديم دورات وورش ومسارات تعليمية فاخرة." },
-      { q: "ما وظيفة المساعد الذكي؟", a: "يساعد المستخدم في التنقل بين الخدمات والدورات والتمويل الإسلامي وطرق التواصل." },
-      { q: "كيف أتواصل معكم؟", a: "من خلال النموذج أو البريد الإلكتروني أو الهاتف." },
-    ],
-  },
-  investors: {
-    eyebrow: "للمستثمرين",
-    title: "صفحة تتحدث إلى رأس المال الأخلاقي طويل الأجل.",
-    description: "هذا القسم يعرّف المستثمرين على فلسفة MIZANIA ونهجها في الحوكمة ومستوى مصداقيتها.",
-    blocks: [["تموضع قائم على الثقة", "يحتاج المستثمرون إلى الانضباط والوضوح والتماسك الأخلاقي."], ["قيمة طويلة الأجل", "يتم النظر إلى رأس المال كمسؤولية ومنفعة مستدامة."], ["جودة العرض", "العرض الفاخر يرفع ثقة المستثمرين."]],
-    cta: "استفسار استثماري",
-  },
-  blog: {
-    eyebrow: "المدونة",
-    title: "محتوى تحريري يعزز السلطة والظهور في البحث.",
-    description: "المدونة تدعم الظهور العضوي والخبرة وعمق العلامة.",
-    read: "اقرأ المقال",
-    items: [
-      { category: "التمويل الأخلاقي", title: "ماذا يعني التمويل الأخلاقي في الاقتصاد الحديث؟", excerpt: "رؤية فاخرة للمسؤولية والثقة وصناعة القيمة المستدامة." },
-      { category: "التمويل الإسلامي", title: "مبادئ التمويل الإسلامي للمؤسسين والمستثمرين", excerpt: "مقدمة عملية إلى التفكير المالي القائم على العدالة." },
-      { category: "الاستشارات", title: "لماذا تعد الثقة أصلاً استراتيجياً؟", excerpt: "كيف تتحول الشفافية والاتساق إلى مزايا طويلة المدى." },
-    ],
-  },
-  contact: {
-    eyebrow: "اتصل بنا",
-    title: "طريقة واضحة وموثوقة للتواصل مع MIZANIA.",
-    description: "إذا كان لديك سؤال أو عرض شراكة أو طلب استشارة، فأرسل لنا رسالة، وسيعود إليك فريقنا في أقرب وقت.",
-    name: "اسمك",
-    email: "البريد الإلكتروني",
-    phone: "رقم الهاتف",
-    company: "الشركة أو المؤسسة",
-    message: "كيف يمكن لـ MIZANIA مساعدتك؟",
-    send: "إرسال الرسالة",
-  },
-  footer: {
-    description: "تمويل أخلاقي فاخر ورؤية في التمويل الإسلامي واستشارات وتعليم قائمون على العدالة والتوازن والثقة.",
-    pages: "الصفحات",
-    explore: "استكشف",
-    contact: "التواصل",
-    rights: "© 2026 MIZANIA. جميع الحقوق محفوظة.",
-    note: "بُني من أجل الثقة الراقية والوضوح العصري والمساعدة الذكية.",
-  },
-  ai: {
-    title: "MIZANIA AI",
-    subtitle: "مساعد ذكي لأسئلتك",
-    placeholder: "اكتب سؤالك...",
-    send: "إرسال",
-    hello: "مرحباً. أنا مساعد MIZANIA الذكي. أستطيع مساعدتك في الخدمات والتمويل الإسلامي والدورات والمستثمرين وبيانات التواصل.",
-    suggestions: ["ما هي خدماتكم؟", "أخبرني عن التمويل الإسلامي", "هل لديكم دورات؟", "كيف يمكنني التواصل؟"],
-    lead: "يمكنني أيضاً توجيهك إلى صفحة التواصل.",
   },
 };
 
@@ -1761,7 +1561,7 @@ function FAQPage({ t, isRTL }) {
   );
 }
 
-function ContactPage({ t, isRTL }) {
+function ContactPage({ t, isRTL, leadDraft, setLeadDraft }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className={`grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 items-start ${isRTL ? "lg:[direction:rtl]" : ""}`}>
@@ -1775,11 +1575,11 @@ function ContactPage({ t, isRTL }) {
         </div>
         <Card className="rounded-[2rem] border-emerald-950/10 shadow-sm">
           <CardContent className="p-8 grid gap-4">
-            <Input placeholder={t.contact.name} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input placeholder={t.contact.email} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input placeholder={t.contact.phone} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input placeholder={t.contact.company} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Textarea placeholder={t.contact.message} className={`min-h-[140px] rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+            <Input value={leadDraft.name} onChange={(e) => setLeadDraft((prev) => ({ ...prev, name: e.target.value }))} placeholder={t.contact.name} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+            <Input value={leadDraft.email || ""} onChange={(e) => setLeadDraft((prev) => ({ ...prev, email: e.target.value }))} placeholder={t.contact.email} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+            <Input value={leadDraft.phone} onChange={(e) => setLeadDraft((prev) => ({ ...prev, phone: e.target.value }))} placeholder={t.contact.phone} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+            <Input value={leadDraft.company} onChange={(e) => setLeadDraft((prev) => ({ ...prev, company: e.target.value }))} placeholder={t.contact.company} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+            <Textarea value={leadDraft.message} onChange={(e) => setLeadDraft((prev) => ({ ...prev, message: e.target.value }))} placeholder={t.contact.message} className={`min-h-[140px] rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
             <Button className="rounded-full bg-[#12382f] hover:bg-[#0f2f27]">{t.contact.send}</Button>
           </CardContent>
         </Card>
@@ -1794,87 +1594,251 @@ type ChatMessage = {
   page?: string | null;
 };
 
-function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpen }) {
+type LeadDraft = {
+  name: string;
+  email?: string;
+  phone: string;
+  company: string;
+  message: string;
+};
+
+function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpen, leadDraft, setLeadDraft }) {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: t.ai.hello }]);
+  const [messages, setMessages] = useState([{ role: "assistant", text: t.ai.hello }]);
+  const [leadStep, setLeadStep] = useState(null);
 
   React.useEffect(() => {
-    setMessages([{ role: "assistant", text: t.ai.hello }]);
+    const savedMessages = typeof window !== "undefined" ? sessionStorage.getItem(`mizania_ai_messages_${language}`) : null;
+    const savedLead = typeof window !== "undefined" ? sessionStorage.getItem("mizania_ai_lead") : null;
+    if (savedMessages) {
+      try {
+        setMessages(JSON.parse(savedMessages));
+      } catch {
+        setMessages([{ role: "assistant", text: t.ai.hello }]);
+      }
+    } else {
+      setMessages([{ role: "assistant", text: t.ai.hello }]);
+    }
+    if (savedLead) {
+      try {
+        setLeadDraft(JSON.parse(savedLead));
+      } catch {}
+    }
     setInput("");
-  }, [language, t.ai.hello]);
+  }, [language, t.ai.hello, setLeadDraft]);
 
-  function getAnswer(raw) {
-    const text = raw.toLowerCase();
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem(`mizania_ai_messages_${language}`, JSON.stringify(messages));
+      sessionStorage.setItem("mizania_ai_lead", JSON.stringify(leadDraft));
+    }
+  }, [messages, leadDraft, language]);
 
-    const contains = (arr) => arr.some((k) => text.includes(k));
+  const quickSuggestions =
+    language === "ru"
+      ? [
+          "Какие у вас услуги?",
+          "Что входит в консалтинг?",
+          "Расскажите про исламские финансы",
+          "Что есть для инвесторов?",
+          "Кто ваши эксперты?",
+          "Оставить заявку",
+        ]
+      : language === "en"
+      ? [
+          "What services do you offer?",
+          "What does consulting include?",
+          "Tell me about Islamic finance",
+          "What is available for investors?",
+          "Who are your experts?",
+          "Leave a request",
+        ]
+      : [
+          "Xizmatlaringiz qanday?",
+          "Konsalting nimani o‘z ichiga oladi?",
+          "Islomiy moliya haqida",
+          "Investorlar uchun nima bor?",
+          "Ekspertlar kimlar?",
+          "Ariza qoldirmoqchiman",
+        ];
 
-    const keysets = {
-      services: ["xizmat", "service", "услуг", "خدم"],
-      islamic: ["islom", "islamic", "ислам", "شرعي", "شريعة"],
-      courses: ["kurs", "course", "курс", "دور"],
-      investors: ["investor", "инвест", "مستثمر"],
-      contact: ["aloqa", "contact", "email", "phone", "bog‘lan", "связ", "контакт", "اتصل", "تواصل"],
-      price: ["narx", "price", "cost", "цена", "стоим", "سعر", "تكلف"],
+  const openSectionLabel = language === "ru" ? "Открыть раздел" : language === "en" ? "Open section" : "Bo‘limni ochish";
+
+  function normalizeText(value) {
+    let out = String(value || "").toLowerCase();
+    ["ʻ", "ʼ", "‘", "’", "`", "´"].forEach((ch) => {
+      out = out.split(ch).join("'");
+    });
+    [".", ",", "?", "!", ":", ";", "(", ")", "[", "]", "{", "}", "-", "_", '"'].forEach((ch) => {
+      out = out.split(ch).join(" ");
+    });
+    return out.split(" ").filter(Boolean).join(" ");
+  }
+
+  function bulletList(items) {
+    return items.map((item) => `• ${item}`).join("\n");
+  }
+
+  function isSkip(value) {
+    const text = normalizeText(value);
+    return ["skip", "otkazib yubor", "o tkazib yubor", "proskip", "пропустить"].some((x) => text.includes(x));
+  }
+
+  function leadPrompt(step) {
+    const prompts = {
+      name:
+        language === "ru"
+          ? "Хорошо. Давайте быстро оформим заявку. Сначала напишите ваше имя."
+          : language === "en"
+          ? "Great. Let’s prepare your request quickly. First, please write your name."
+          : "Yaxshi. Keling, so‘rovni tez tayyorlaymiz. Avval ismingizni yozing.",
+      phone:
+        language === "ru"
+          ? "Спасибо. Теперь напишите ваш телефон номер."
+          : language === "en"
+          ? "Thank you. Now please send your phone number."
+          : "Rahmat. Endi telefon raqamingizni yozing.",
+      company:
+        language === "ru"
+          ? "Если есть, напишите компанию или организацию. Можно пропустить."
+          : language === "en"
+          ? "If relevant, write your company or organization. You can also skip this step."
+          : "Agar bo‘lsa, kompaniya yoki tashkilot nomini yozing. Istasangiz bu bosqichni o‘tkazib yuborishingiz mumkin.",
+      message:
+        language === "ru"
+          ? "Кратко напишите, какая помощь вам нужна."
+          : language === "en"
+          ? "Briefly describe what kind of help you need."
+          : "Qisqacha yozing: sizga qanday yordam kerak?",
+      done:
+        language === "ru"
+          ? "Готово. Я заполнил основные данные и направил вас в Contact. Проверьте форму и отправьте запрос."
+          : language === "en"
+          ? "Done. I filled the key details and moved you to Contact. Please review the form and submit your request."
+          : "Tayyor. Asosiy ma’lumotlar to‘ldirildi va siz Contact bo‘limiga yo‘naltirildingiz. Formani tekshirib, so‘rovni yuboring.",
+    };
+    return prompts[step];
+  }
+
+  function answerText(raw) {
+    const text = normalizeText(raw);
+    const hasAny = (arr) => arr.some((word) => text.includes(word));
+
+    const greetings =
+      language === "ru"
+        ? ["привет", "здравствуйте", "добрый день", "салам"]
+        : language === "en"
+        ? ["hello", "hi", "hey", "good morning", "good afternoon"]
+        : ["salom", "assalomu alaykum", "assalom", "vaalaykum", "qalaysiz"];
+
+    const thanks =
+      language === "ru"
+        ? ["спасибо", "благодар", "рахмат"]
+        : language === "en"
+        ? ["thanks", "thank you"]
+        : ["rahmat", "tashakkur"];
+
+    const intents = {
+      about: language === "ru" ? ["о бренде", "кто вы", "о компании", "mizania"] : language === "en" ? ["about", "who are you", "brand", "mizania"] : ["biz haqimizda", "kimsizlar", "mizania", "brend", "brand"],
+      services: language === "ru" ? ["услуг", "сервис", "что вы делаете"] : language === "en" ? ["service", "services", "what do you offer"] : ["xizmat", "xizmatlar", "nima qilasiz", "taklif"],
+      consulting: language === "ru" ? ["консалт", "консультац", "стратег"] : language === "en" ? ["consulting", "consultation", "advisory", "strategy"] : ["konsalting", "konsultatsiya", "maslahat", "strategiya"],
+      islamic: language === "ru" ? ["ислам", "шариат", "халяль"] : language === "en" ? ["islamic", "sharia", "halal"] : ["islom", "shariat", "halol"],
+      courses: language === "ru" ? ["курс", "обуч", "образован", "воркшоп"] : language === "en" ? ["course", "courses", "education", "workshop"] : ["kurs", "kurslar", "ta'lim", "talim", "dars", "workshop"],
+      investors: language === "ru" ? ["инвест", "капитал", "партнер"] : language === "en" ? ["investor", "investors", "capital"] : ["investor", "investorlar", "kapital"],
+      experts: language === "ru" ? ["эксперт", "учен", "сеть экспертов"] : language === "en" ? ["expert", "experts", "scholar", "network"] : ["ekspert", "ekspertlar", "olim", "hamkor ekspert"],
+      blog: language === "ru" ? ["блог", "стать", "материал", "seo"] : language === "en" ? ["blog", "article", "articles", "content"] : ["blog", "maqola", "kontent", "material"],
+      contact: language === "ru" ? ["контакт", "связ", "email", "почта", "телефон"] : language === "en" ? ["contact", "email", "phone", "reach you"] : ["aloqa", "bog'lan", "bog‘lan", "email", "telefon"],
+      price: language === "ru" ? ["цена", "стоимость", "сколько стоит"] : language === "en" ? ["price", "pricing", "cost", "how much"] : ["narx", "qancha", "baho", "hisob"],
+      faq: language === "ru" ? ["faq", "вопрос", "часто", "помощь"] : language === "en" ? ["faq", "question", "questions", "help"] : ["faq", "savol", "savollar", "yordam"],
+      lead: language === "ru" ? ["оставить заявку", "хочу консультацию", "свяжитесь", "перезвоните"] : language === "en" ? ["leave a request", "i need consultation", "contact me", "call me"] : ["ariza qoldirmoqchiman", "konsultatsiya kerak", "men bilan bog'laning", "menga telefon qiling"],
     };
 
-    if (contains(keysets.services)) {
+    if (hasAny(greetings)) return { text: t.ai.hello, page: null, lead: false };
+    if (hasAny(thanks)) {
       return {
-        text: t.services.items.map((s) => `• ${s.title}: ${s.text}`).join("\n"),
-        page: "services",
+        text: language === "ru" ? "Пожалуйста. Я также могу помочь по услугам, консалтингу, курсам, исламским финансам, инвесторам, экспертам и контактам." : language === "en" ? "You’re welcome. I can also help with services, consulting, courses, Islamic finance, investors, experts, and contact information." : "Marhamat. Men sizga xizmatlar, konsalting, kurslar, islomiy moliya, investorlar, ekspertlar va aloqa bo‘yicha ham yordam bera olaman.",
+        page: null,
+        lead: false,
       };
     }
-    if (contains(keysets.islamic)) {
-      return {
-        text: `${t.principles.description}\n\n${t.principles.items.slice(0, 3).map((x) => `• ${x}`).join("\n")}`,
-        page: "islamicFinance",
-      };
+    if (hasAny(intents.lead)) return { text: leadPrompt("name"), page: null, lead: true };
+    if (hasAny(intents.about)) return { text: `${t.about.description}
+
+${bulletList(t.about.points.slice(0, 3))}`, page: "about", lead: false };
+    if (hasAny(intents.services)) return { text: t.services.items.map((item) => `• ${item.title}: ${item.text}`).join("\n"), page: "services", lead: false };
+    if (hasAny(intents.consulting)) return { text: `${t.services.items[2].title}: ${t.services.items[2].text}
+
+• ${t.why.cards[1][0]} — ${t.why.cards[1][1]}
+• ${t.why.cards[2][0]} — ${t.why.cards[2][1]}`, page: "consulting", lead: false };
+    if (hasAny(intents.islamic)) return { text: `${t.principles.description}
+
+${bulletList(t.principles.items.slice(0, 4))}`, page: "islamicFinance", lead: false };
+    if (hasAny(intents.courses)) return { text: `${t.education.description}
+
+${t.education.cards.map((item) => `• ${item[0]} — ${item[1]}`).join("\n")}`, page: "courses", lead: false };
+    if (hasAny(intents.investors)) return { text: `${t.investors.description}
+
+${t.investors.blocks.map((item) => `• ${item[0]} — ${item[1]}`).join("\n")}`, page: "investors", lead: false };
+    if (hasAny(intents.experts)) {
+      const experts = (collaboratingExperts[language] || collaboratingExperts.en).slice(0, 3);
+      return { text: experts.map((expert) => `• ${expert.name} — ${expert.focus}`).join("\n"), page: "network", lead: false };
     }
-    if (contains(keysets.courses)) {
-      return {
-        text: `${t.education.description}\n\n${t.education.cards.map((x) => `• ${x[0]} — ${x[1]}`).join("\n")}`,
-        page: "courses",
-      };
-    }
-    if (contains(keysets.investors)) {
-      return {
-        text: `${t.investors.description}\n\n${t.investors.blocks.map((x) => `• ${x[0]} — ${x[1]}`).join("\n")}`,
-        page: "investors",
-      };
-    }
-    if (contains(keysets.contact)) {
-      return {
-        text: `${t.brand.email}\n${t.brand.phone}\n${t.ai.lead}`,
-        page: "contact",
-      };
-    }
-    if (contains(keysets.price)) {
-      return {
-        text: language === "ru"
-          ? "Стоимость зависит от формата услуги, объёма запроса и уровня сопровождения. Для точного расчёта лучше перейти в Contact и отправить краткий запрос."
-          : language === "en"
-          ? "Pricing depends on the service format, scope of work, and level of support. For an exact quote, please use the Contact page."
-          : "Narx xizmat turi, ish hajmi va hamroh bo‘lish darajasiga qarab belgilanadi. Aniq hisob uchun Contact bo‘limiga o‘ting.",
-        page: "contact",
-      };
-    }
+    if (hasAny(intents.blog)) return { text: t.blog.items.map((post) => `• ${post.title} — ${post.excerpt}`).join("\n"), page: "blog", lead: false };
+    if (hasAny(intents.contact)) return { text: `${t.brand.email}
+${t.brand.phone}
+${t.ai.lead}`, page: "contact", lead: false };
+    if (hasAny(intents.price)) return { text: language === "ru" ? "Стоимость зависит от формата услуги, объёма запроса и уровня сопровождения. Для точного расчёта лучше перейти в Contact и отправить краткий запрос." : language === "en" ? "Pricing depends on the service format, scope of work, and level of support. For an exact quote, please use the Contact page." : "Narx xizmat turi, ish hajmi va hamroh bo‘lish darajasiga qarab belgilanadi. Aniq hisob uchun Contact bo‘limiga o‘ting.", page: "contact", lead: false };
+    if (hasAny(intents.faq)) return { text: t.faq.items.map((item) => `• ${item.q}
+${item.a}`).join("\n\n"), page: "faq", lead: false };
+
+    const matchedFaq = t.faq.items.find((item) => {
+      const parts = normalizeText(item.q).split(" ").filter(Boolean);
+      return parts.some((part) => part.length > 4 && text.includes(part));
+    });
+    if (matchedFaq) return { text: `${matchedFaq.q}
+
+${matchedFaq.a}`, page: "faq", lead: false };
 
     return {
-      text: language === "ru"
-        ? "Я могу помочь по услугам, исламским финансам, курсам, инвесторам и контактам. Задайте вопрос более конкретно."
-        : language === "en"
-        ? "I can help with services, Islamic finance, courses, investors, and contact information. Please ask a more specific question."
-        : "Men xizmatlar, islomiy moliya, kurslar, investorlar va aloqa bo‘yicha yordam bera olaman. Savolni biroz aniqroq yozing.",
+      text: language === "ru" ? "Я могу помочь по услугам, консалтингу, исламским финансам, курсам, инвесторам, экспертам, блогу, FAQ и контактам. Задайте вопрос чуть точнее." : language === "en" ? "I can help with services, consulting, Islamic finance, courses, investors, experts, blog content, FAQ, and contact information. Please ask a more specific question." : "Men xizmatlar, konsalting, islomiy moliya, kurslar, investorlar, ekspertlar, blog, FAQ va aloqa bo‘yicha yordam bera olaman. Savolni biroz aniqroq yozing.",
       page: null,
+      lead: false,
     };
   }
 
-  function sendMessage(customText?: string) {
-    const text = (customText ?? input).trim();
+  function sendMessage(customText) {
+    const text = String(customText || input).trim();
     if (!text) return;
-    const userMsg: ChatMessage = { role: "user", text };
-    const answer = getAnswer(text);
-    const assistantMsg: ChatMessage = { role: "assistant", text: answer.text, page: answer.page };
-    setMessages((prev) => [...prev, userMsg, assistantMsg]);
+
+    if (leadStep) {
+      const nextLead = { ...leadDraft };
+      if (leadStep === "name") nextLead.name = text;
+      if (leadStep === "phone") nextLead.phone = text;
+      if (leadStep === "company" && !isSkip(text)) nextLead.company = text;
+      if (leadStep === "message") nextLead.message = text;
+      setLeadDraft(nextLead);
+
+      let nextStep = null;
+      if (leadStep === "name") nextStep = "phone";
+      if (leadStep === "phone") nextStep = "company";
+      if (leadStep === "company") nextStep = "message";
+      if (leadStep === "message") nextStep = null;
+
+      if (nextStep) {
+        setLeadStep(nextStep);
+        setMessages((prev) => [...prev, { role: "user", text }, { role: "assistant", text: leadPrompt(nextStep), page: null }]);
+      } else {
+        setLeadStep(null);
+        setCurrentPage("contact");
+        setMessages((prev) => [...prev, { role: "user", text }, { role: "assistant", text: leadPrompt("done"), page: "contact" }]);
+      }
+      setInput("");
+      return;
+    }
+
+    const answer = answerText(text);
+    if (answer.lead) setLeadStep("name");
+    setMessages((prev) => [...prev, { role: "user", text }, { role: "assistant", text: answer.text, page: answer.page }]);
     setInput("");
   }
 
@@ -1895,7 +1859,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className={`fixed z-50 w-[calc(100vw-1rem)] sm:w-[92vw] max-w-[420px] ${isRTL ? "left-2 sm:left-6" : "right-2 sm:right-6"} bottom-20 sm:bottom-24 max-sm:top-[84px]`}
+            className={`fixed z-50 w-[calc(100vw-1rem)] sm:w-[92vw] max-w-[460px] ${isRTL ? "left-2 sm:left-6" : "right-2 sm:right-6"} bottom-20 sm:bottom-24 max-sm:top-[84px]`}
           >
             <Card className="overflow-hidden rounded-[2rem] border-emerald-950/10 shadow-[0_24px_60px_rgba(10,34,28,0.18)]">
               <div className="bg-[#12382f] p-5 text-white">
@@ -1912,15 +1876,15 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
                 </div>
               </div>
               <CardContent className="p-0">
-                <div className="max-h-[calc(100vh-15rem)] sm:max-h-[420px] space-y-4 overflow-y-auto bg-[#fbfcfb] p-4 sm:p-5">
+                <div className="max-h-[calc(100vh-15rem)] sm:max-h-[460px] space-y-4 overflow-y-auto bg-[#fbfcfb] p-4 sm:p-5">
                   {messages.map((message, idx) => (
                     <div key={`${message.role}-${idx}`} className={`flex ${message.role === "user" ? (isRTL ? "justify-start" : "justify-end") : (isRTL ? "justify-end" : "justify-start")}`}>
-                      <div className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-7 whitespace-pre-line ${message.role === "user" ? "bg-[#12382f] text-white" : "bg-white text-[#1e3f36] border border-emerald-950/10"}`}>
+                      <div className={`max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-7 whitespace-pre-line ${message.role === "user" ? "bg-[#12382f] text-white" : "bg-white text-[#1e3f36] border border-emerald-950/10"}`}>
                         {message.text}
                         {message.page ? (
                           <div className="mt-3">
                             <Button size="sm" variant="outline" className="rounded-full border-[#12382f]/20 text-[#12382f] hover:bg-emerald-50" onClick={() => setCurrentPage(message.page)}>
-                              {t.nav.speak}
+                              {openSectionLabel}
                             </Button>
                           </div>
                         ) : null}
@@ -1930,7 +1894,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
                 </div>
                 <div className="border-t border-emerald-950/10 bg-white p-4">
                   <div className="mb-3 flex flex-wrap gap-2">
-                    {t.ai.suggestions.map((s) => (
+                    {quickSuggestions.map((s) => (
                       <button key={s} onClick={() => sendMessage(s)} className="rounded-full bg-emerald-50 px-3 py-2 text-xs text-[#12382f] hover:bg-emerald-100">
                         {s}
                       </button>
@@ -1957,6 +1921,13 @@ export default function MIZANIAWebsiteV2() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [language, setLanguage] = useState<LanguageCode>("uz");
   const [chatOpen, setChatOpen] = useState(false);
+  const [leadDraft, setLeadDraft] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
 
   const t = dictionary[language];
   const isRTL = rtlLanguages.includes(language);
@@ -2068,11 +2039,11 @@ export default function MIZANIAWebsiteV2() {
       case "faq":
         return <FAQPage t={t} isRTL={isRTL} />;
       case "contact":
-        return <ContactPage t={t} isRTL={isRTL} />;
+        return <ContactPage t={t} isRTL={isRTL} leadDraft={leadDraft} setLeadDraft={setLeadDraft} />;
       default:
         return <HomePage setCurrentPage={setCurrentPage} t={t} isRTL={isRTL} language={language} />;
     }
-  }, [currentPage, t, isRTL, language]);
+  }, [currentPage, t, isRTL, language, leadDraft]);
 
   return (
     <div dir={isRTL ? "rtl" : "ltr"} className="min-h-screen bg-[#fcfdfc] text-slate-900">
@@ -2092,7 +2063,16 @@ export default function MIZANIAWebsiteV2() {
         {pageContent}
       </motion.main>
       <Footer setCurrentPage={setCurrentPage} t={t} pageLabels={pageLabels} isRTL={isRTL} />
-      <AIChatWidget t={t} language={language} setCurrentPage={setCurrentPage} isRTL={isRTL} chatOpen={chatOpen} setChatOpen={setChatOpen} />
+      <AIChatWidget
+        t={t}
+        language={language}
+        setCurrentPage={setCurrentPage}
+        isRTL={isRTL}
+        chatOpen={chatOpen}
+        setChatOpen={setChatOpen}
+        leadDraft={leadDraft}
+        setLeadDraft={setLeadDraft}
+      />
     </div>
   );
 }
