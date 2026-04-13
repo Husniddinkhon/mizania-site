@@ -1816,7 +1816,7 @@ ${matchedFaq.a}`, page: "faq", lead: false };
     };
   }
 
-  function sendMessage(customText) {
+  function sendMessage(customText?: string) {
     const text = String(customText || input).trim();
     if (!text) return;
 
