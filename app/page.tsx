@@ -198,16 +198,16 @@ const uzLatin = {
     ai: "AI yordamchi",
   },
   hero: {
-    badge: "Premium etik moliya va konsalting brendi",
+    badge: "Premium halol moliya va konsalting brendi",
     title: "Tamoyil, strategiya va ishonchga tayangan moliya.",
     highlight: "Tamoyil",
     description:
-      "MIZANIA etik moliya, islomiy moliya, ta’lim, konsalting va investorlar bilan ishlash yo‘nalishlarida global premium darajadagi brend sifatida qurilgan.",
+      "MIZANIA halol moliya, islomiy moliya, ta’lim, konsalting va investorlar bilan ishlash yo‘nalishlarida global premium darajadagi brend sifatida qurilgan."
     cta1: "Xizmatlarni ko‘rish",
     cta2: "Konsultatsiya so‘rash",
     cards: [
       ["Premium", "Global korporativ ko‘rinish"],
-      ["Etik", "Adolatga tayangan yondashuv"],
+      ["Adolatli", "Adolatga tayangan yondashuv"]
       ["Ishonchli", "Sokin va professional imidj"],
     ],
     promise: "Brend va’dasi",
@@ -217,7 +217,7 @@ const uzLatin = {
   trust: {
     eyebrow: "Ishonch indikatorlari",
     items: [
-      ["Etik", "Tamoyilga asoslangan qarorlar"],
+      ["Tamoyilli", "Tamoyilga asoslangan qarorlar"]
       ["Islomiy", "Shariatga mos moliyaviy yondashuv"],
       ["Ta’lim", "Bilimga asoslangan qiymat"],
       ["Premium", "Global darajadagi taqdimot"],
@@ -229,7 +229,7 @@ const uzLatin = {
     description:
       "MIZANIA oddiy moliyaviy sayt emas. U adolat, muvozanat, ta’lim va strategik ishonchga qurilgan premium platforma.",
     points: [
-      "Etikaga asoslangan premium pozitsiya",
+      "Adolat ва tamoyilga asoslangan premium pozitsiya",
       "Nafis va minimal vizual identitet",
       "Kuchli ta’lim va konsalting qiyofasi",
       "Global auditoriya va jiddiy hamkorlar uchun mos",
@@ -238,7 +238,7 @@ const uzLatin = {
   },
   services: {
     eyebrow: "Xizmatlar",
-    title: "Etik o‘sish uchun premium xizmat arxitekturasi.",
+    title: "Halol va barqaror o‘sish uchun premium xizmatlar."
     description:
       "Har bir taklif nafis, strategik va yuqori ishonch uyg‘otadigan tarzda ishlab chiqilgan.",
     button: "Barcha xizmatlar",
@@ -274,7 +274,7 @@ const uzLatin = {
     ],
   },
   principles: {
-    eyebrow: "Etik moliya tamoyillari",
+    eyebrow: "Halol va adolatli moliya tamoyillari"
     title: "Tamoyillar bezak emas. Ular butun tuzilmaning o‘zi.",
     description:
       "MIZANIAning moliyaga qarashi adolat, shaffoflik, javobgarlik va haqiqiy qiymat yaratishga tayangan.",
@@ -292,11 +292,11 @@ const uzLatin = {
     eyebrow: "Ta’lim takliflari",
     title: "Jiddiy o‘sish uchun yaratilgan bilim.",
     description:
-      "Etik moliya, islomiy moliya va amaliy strategik fikrlashni chuqur tushunishni istaganlar uchun kurslar va workshoplar.",
+      "Halol moliya, islomiy moliya va amaliy strategik fikrlashni chuqur tushunishni istaganlar uchun kurslar va workshoplar."
     button1: "Kurslarni ko‘rish",
     button2: "Dastur so‘rash",
     cards: [
-      ["Asoslar", "Etik va islomiy moliya tamoyillari"],
+      ["Asoslar", "Halol va islomiy moliya tamoyillari"]
       ["Executive", "Qaror qabul qiluvchilar uchun yopiq workshoplar"],
       ["Amaliy", "Keyslar asosidagi mashg‘ulotlar"],
       ["Premium", "Yuqori darajadagi ta’lim tajribasi"],
@@ -310,7 +310,7 @@ const uzLatin = {
     items: [
       {
         name: "Xususiy investor",
-        role: "Etik kapital hamkori",
+        role: "Ishonchli kapital hamkori"
         quote:
           "MIZANIA sokin professionallikni noyob ma’naviy aniqlik bilan uyg‘unlashtiradi. Brend global va ishonchli ko‘rinadi.",
       },
@@ -351,7 +351,7 @@ const uzLatin = {
     items: [
       {
         q: "MIZANIA nimaga ixtisoslashgan?",
-        a: "MIZANIA etik moliya, islomiy moliya, ta’lim, strategik konsalting va investorlar bilan ishlash yo‘nalishlariga ixtisoslashgan.",
+        a: "MIZANIA halol moliya, islomiy moliya, ta’lim, strategik konsalting va investorlar bilan ishlash yo‘nalishlariga ixtisoslashgan."
       },
       {
         q: "Onlayn kurslar bormi?",
@@ -369,11 +369,11 @@ const uzLatin = {
   },
   investors: {
     eyebrow: "Investorlar",
-    title: "Etik va uzoq muddatli kapital bilan ishlashga mos sahifa.",
+    title: "Ishonchli va uzoq muddatli kapital bilan ishlashga mos sahifa."
     description:
       "Bu bo‘lim investorlarni MIZANIA falsafasi, boshqaruv yondashuvi va ishonchliligi bilan tanishtiradi.",
     blocks: [
-      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va etik yaxlitlik ham muhim."],
+      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va tamoyillarga sodiqlik ham muhim."]
       ["Uzoq muddatli qiymat", "MIZANIA kapitalni mas’uliyat va barqaror foyda vositasi sifatida ko‘radi."],
       ["Taqdimot sifati", "Premium vizual uslub va korporativ darajadagi taqdimot investor ishonchini oshiradi."],
     ],
@@ -386,8 +386,8 @@ const uzLatin = {
     read: "Maqolani o‘qish",
     items: [
       {
-        category: "Etik moliya",
-        title: "Zamonaviy iqtisodda etik moliya nimani anglatadi",
+        category: "Halol moliya"
+        title: "Zamonaviy iqtisodda halol moliya nimani anglatadi"
         excerpt: "Mas’uliyat, ishonch va barqaror qiymat yaratish haqidagi premium qarash.",
       },
       {
@@ -414,7 +414,7 @@ const uzLatin = {
     send: "Xabar yuborish",
   },
   footer: {
-    description: "Adolat, muvozanat va ishonchga tayangan premium etik moliya, islomiy moliya, konsalting va ta’lim.",
+    description: "Adolat, muvozanat va ishonchga tayangan premium halol moliya, islomiy moliya, konsalting va ta’lim."
     pages: "Sahifalar",
     explore: "Bo‘limlar",
     contact: "Aloqa",
@@ -979,7 +979,7 @@ const dictionary: Record<LanguageCode, any> = {
     network: {
       eyebrow: "Эксперт ва маслаҳат ҳамкорлик тармоғи",
       title: "MIZANIA’нинг билим ва маслаҳат салоҳиятини кучайтирувчи танланган ҳамкор экспертлар.",
-      description: "MIZANIA этик молия, исломий молия, таълим ва маслаҳат йўналишларида танланган олимлар, тадқиқотчилар ва соҳавий мутахассислар билан ҳамкорлик қилади.",
+      description: "MIZANIA ҳалол молия, исломий молия, таълим ва маслаҳат йўналишларида танланган олимлар, тадқиқотчилар ва соҳавий мутахассислар билан ҳамкорлик қилади.",
       note: "Профиллар MIZANIAнинг билим ва маслаҳат йўналишидаги ҳамкорликлари ҳақида умумий маълумот сифатида тақдим этилган.",
       cta: "MIZANIA билан боғланиш",
     },
@@ -989,7 +989,7 @@ const dictionary: Record<LanguageCode, any> = {
     network: {
       eyebrow: "Ekspert va maslahat hamkorlik tarmog‘i",
       title: "MIZANIA’ning bilim va maslahat salohiyatini kuchaytiruvchi tanlangan hamkor ekspertlar.",
-      description: "MIZANIA etik moliya, islomiy moliya, ta’lim va maslahat yo‘nalishlarida tanlangan olimlar, tadqiqotchilar va sohaviy mutaxassislar bilan hamkorlik qiladi.",
+      description: "MIZANIA halol moliya, islomiy moliya, ta’lim va maslahat yo‘nalishlarida tanlangan olimlar, tadqiqotchilar va sohaviy mutaxassislar bilan hamkorlik qiladi.",
       note: "Profillar MIZANIAнинг bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
       cta: "MIZANIA bilan bog‘lanish",
     },
