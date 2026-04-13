@@ -346,7 +346,7 @@ const uzLatin = {
     eyebrow: "Ko‘p so‘raladigan savollar",
     title: "Aniqlik ishonchni oshiradi va to‘siqlarni kamaytiradi.",
     description:
-      "Muhim savollarga oldindan javob berish ishonchni oshiradi va murojaat ehtimolini kuchaytiradi.",
+      "Muhim savollarga олдиндан жавоб бериш ишончни оширади ва мурожаат эҳтимолини кучайтиради.",
     button: "To‘liq FAQ",
     items: [
       {
@@ -421,7 +421,7 @@ const uzLatin = {
     explore: "Bo‘limlar",
     contact: "Aloqa",
     rights: "© 2026 MIZANIA. Barcha huquqlar himoyalangan.",
-    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi bilan kuchaytirilgan platforma.",
+    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi билан кучайтирилган платформа.",
   },
   ai: {
     title: "MIZANIA AI",
@@ -992,7 +992,7 @@ const dictionary: Record<LanguageCode, any> = {
       eyebrow: "Ekspert va maslahat hamkorlik tarmog‘i",
       title: "MIZANIA’ning bilim va maslahat salohiyatini kuchaytiruvchi tanlangan hamkor ekspertlar.",
       description: "MIZANIA halol moliya, islomiy moliya, ta’lim va maslahat yo‘nalishlarida tanlangan olimlar, tadqiqotchilar va sohaviy mutaxassislar bilan hamkorlik qiladi.",
-      note: "Profillar MIZANIAning bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
+      note: "Profillar MIZANIAнинг bilim va maslahat yo‘nalishidagi hamkorliklari haqida umumiy ma’lumot sifatida taqdim etilgan.",
       cta: "MIZANIA bilan bog‘lanish",
     },
   },
@@ -1279,15 +1279,15 @@ const MIZANIA_LOGO = "/logo.png";
 
 function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
   return (
-    <div className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
-      <div className={`relative overflow-hidden rounded-[1.2rem] border border-[#d8cdb5] bg-white ${compact ? "h-16 w-16" : "h-20 w-20 sm:h-24 sm:w-24"} shadow-[0_10px_24px_rgba(16,48,40,0.08)]`}>
+    <div className={`flex items-center gap-2.5 sm:gap-3 ${isRTL ? "flex-row-reverse" : ""}`}>
+      <div className={`relative overflow-hidden rounded-[1.2rem] border border-[#d8cdb5] bg-white ${compact ? "h-12 w-12 sm:h-16 sm:w-16" : "h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24"} shadow-[0_10px_24px_rgba(16,48,40,0.08)]`}>
         <img src={MIZANIA_LOGO} alt="MIZANIA logo" className="h-full w-full object-contain p-1.5" />
       </div>
       <div className={isRTL ? "text-right" : "text-left"}>
-        <div className={`${compact ? "text-[1.55rem]" : "text-[2rem] sm:text-[2.2rem]"} leading-none tracking-[0.22em] font-semibold text-[#12382f]`}>
+        <div className={`${compact ? "text-[1.1rem] sm:text-[1.55rem]" : "text-[1.5rem] sm:text-[2rem] lg:text-[2.2rem]"} leading-none tracking-[0.22em] font-semibold text-[#12382f]`}>
           MIZANIA
         </div>
-        <div className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-[#8b7744]">
+        <div className="mt-1.5 hidden text-[10px] uppercase tracking-[0.22em] text-[#8b7744] sm:block">
           {tagline}
         </div>
       </div>
@@ -1308,7 +1308,7 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
   return (
     <header className="sticky top-0 z-50 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-        <div className={`flex min-h-[92px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
+        <div className={`flex min-h-[78px] sm:min-h-[92px] items-center justify-between gap-3 sm:gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
           <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
             <BrandMark compact isRTL={isRTL} tagline={t.brand.tagline} />
           </button>
@@ -1379,25 +1379,25 @@ function Hero({ setCurrentPage, t, isRTL }) {
   const highlight = t.hero.highlight;
   const parts = t.hero.title.split(highlight);
   return (
-    <section className="relative overflow-hidden bg-[#f8f3e8] pt-6 lg:pt-8">
+    <section className="relative overflow-hidden bg-[#f8f3e8] pt-3 sm:pt-6 lg:pt-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,45,37,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(201,169,90,0.12),transparent_28%)]" />
-      <div className={`mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:px-8 lg:py-16 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
-        <div className={`rounded-[2rem] border border-[#d8cdb5] bg-white p-8 shadow-[0_16px_40px_rgba(16,48,40,0.06)] lg:p-10 ${isRTL ? "text-right" : "text-left"}`}>
+      <div className={`mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:gap-8 sm:px-6 md:py-10 lg:grid-cols-[1.18fr_0.82fr] lg:gap-12 lg:px-8 lg:py-16 ${isRTL ? "lg:[direction:rtl]" : ""}`}>
+        <div className={`rounded-[1.5rem] sm:rounded-[2rem] border border-[#d8cdb5] bg-white p-5 sm:p-8 shadow-[0_16px_40px_rgba(16,48,40,0.06)] lg:p-10 ${isRTL ? "text-right" : "text-left"}`}>
           <BrandMark isRTL={isRTL} tagline={t.brand.tagline} />
-          <div className={`mt-8 inline-flex items-center gap-2 rounded-full border border-[#d7c398] bg-[#fbf8f1] px-4 py-2 text-sm text-[#7b6a3d] ${isRTL ? "flex-row-reverse" : ""}`}>
+          <div className={`mt-6 inline-flex items-center gap-2 rounded-full border border-[#d7c398] bg-[#fbf8f1] px-4 py-2 text-sm text-[#7b6a3d] ${isRTL ? "flex-row-reverse" : ""}`}>
             <BadgeCheck className="h-4 w-4" />
             {t.hero.badge}
           </div>
           <div className="mt-8 space-y-6">
-            <h1 className="max-w-3xl text-4xl font-semibold leading-[1.03] tracking-tight text-[#0d2d25] sm:text-5xl lg:text-[4.5rem]">
+            <h1 className="max-w-3xl text-[2.35rem] font-semibold leading-[1.04] tracking-tight text-[#0d2d25] sm:text-5xl lg:text-[4.5rem]">
               {parts[0]}
               <span className="text-[#8c7440]">{highlight}</span>
               {parts[1] || ""}
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[#38544b]">{t.hero.description}</p>
+            <p className="max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-[#38544b]">{t.hero.description}</p>
           </div>
-          <div className={`mt-8 flex flex-col gap-4 sm:flex-row ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-            <Button className="rounded-full bg-[#cba95a] px-8 py-6 text-base text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("services")}>
+          <div className={`mt-7 flex flex-col gap-3 sm:flex-row ${isRTL ? "sm:flex-row-reverse" : ""}`}>
+            <Button className="rounded-full bg-[#cba95a] px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("services")}>
               {t.hero.cta1} {isRTL ? <ArrowRight className="mr-2 h-4 w-4 rotate-180" /> : <ArrowRight className="ml-2 h-4 w-4" />}
             </Button>
             <Button variant="outline" className="rounded-full border-[#cdbb91] px-8 py-6 text-base text-[#12382f] hover:bg-[#f5efe1]" onClick={() => setCurrentPage("contact")}>
@@ -1406,14 +1406,14 @@ function Hero({ setCurrentPage, t, isRTL }) {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-[#254238] bg-gradient-to-br from-[#0f3028] via-[#164337] to-[#0a211b] p-6 text-white shadow-[0_24px_60px_rgba(10,34,28,0.18)] lg:p-5">
+        <div className="rounded-[1.5rem] sm:rounded-[2rem] border border-[#254238] bg-gradient-to-br from-[#0f3028] via-[#164337] to-[#0a211b] p-4 sm:p-6 text-white shadow-[0_24px_60px_rgba(10,34,28,0.18)] lg:p-5">
           <div className="grid h-full gap-5 lg:grid-rows-[auto_1fr_auto]">
             <div className={`flex items-start justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
               <div className={isRTL ? "text-right" : "text-left"}>
                 <div className="text-sm uppercase tracking-[0.22em] text-amber-300/70">MIZANIA</div>
-                <div className="mt-2 text-[1.7rem] font-medium leading-tight">{t.hero.promise}</div>
+                <div className="mt-2 text-[1.35rem] sm:text-[1.7rem] font-medium leading-tight">{t.hero.promise}</div>
               </div>
-              <div className="relative h-20 w-20 overflow-hidden rounded-full border border-amber-300/20 bg-[radial-gradient(circle_at_30%_30%,rgba(232,204,127,0.35),transparent_35%),radial-gradient(circle_at_60%_70%,rgba(73,116,92,0.45),transparent_35%),linear-gradient(135deg,#284c40,#0f3028)] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-full border border-amber-300/20 bg-[radial-gradient(circle_at_30%_30%,rgba(232,204,127,0.35),transparent_35%),radial-gradient(circle_at_60%_70%,rgba(73,116,92,0.45),transparent_35%),linear-gradient(135deg,#284c40,#0f3028)] shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
                 <div className="absolute inset-2 rounded-full border border-white/10" />
               </div>
             </div>
@@ -1667,7 +1667,7 @@ function Footer({ setCurrentPage, t, pageLabels, isRTL }) {
   return (
     <footer className="border-t border-emerald-950/10 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className={`grid gap-10 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.9fr] ${isRTL ? "lg:[direction:rtl]" : ""}`}>
+        <div className={`grid gap-8 md:grid-cols-2 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.9fr] ${isRTL ? "lg:[direction:rtl]" : ""}`}>
           <div className={isRTL ? "text-right" : "text-left"}>
             <div className="text-2xl tracking-[0.28em] font-semibold text-[#0f3028]">MIZANIA</div>
             <p className="mt-4 max-w-md text-[#566e66] leading-7">{t.footer.description}</p>
@@ -1698,7 +1698,7 @@ function Footer({ setCurrentPage, t, pageLabels, isRTL }) {
           </div>
         </div>
         <GoldDivider />
-        <div className={`mt-6 flex flex-col gap-3 text-sm text-[#6f847d] sm:flex-row sm:items-center sm:justify-between ${isRTL ? "sm:flex-row-reverse" : ""}`}>
+        <div className={`mt-6 flex flex-col gap-3 text-sm text-[#6f847d] lg:flex-row lg:items-center lg:justify-between ${isRTL ? "sm:flex-row-reverse" : ""}`}>
           <div>{t.footer.rights}</div>
           <div>{t.footer.note}</div>
         </div>
@@ -1995,10 +1995,10 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
     <>
       <button
         onClick={() => setChatOpen(true)}
-        className={`fixed bottom-6 z-50 inline-flex items-center gap-3 rounded-full bg-[#12382f] px-5 py-4 text-white shadow-[0_18px_40px_rgba(18,56,47,0.28)] hover:bg-[#0f2f27] ${isRTL ? "left-6" : "right-6"}`}
+        className={`fixed bottom-4 sm:bottom-6 z-50 inline-flex items-center gap-2.5 sm:gap-3 rounded-full bg-[#12382f] px-4 sm:px-5 py-3.5 sm:py-4 text-sm sm:text-base text-white shadow-[0_18px_40px_rgba(18,56,47,0.28)] hover:bg-[#0f2f27] ${isRTL ? "left-4 sm:left-6" : "right-4 sm:right-6"}`}
       >
         <MessageSquare className="h-5 w-5" />
-        <span className="font-medium">{t.ai.title}</span>
+        <span className="hidden sm:inline font-medium">{t.ai.title}</span>
       </button>
 
       <AnimatePresence>
@@ -2008,7 +2008,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className={`fixed bottom-24 z-50 w-[92vw] max-w-[420px] ${isRTL ? "left-6" : "right-6"}`}
+            className={`fixed z-50 w-[calc(100vw-1rem)] sm:w-[92vw] max-w-[420px] ${isRTL ? "left-2 sm:left-6" : "right-2 sm:right-6"} bottom-20 sm:bottom-24 max-sm:top-[84px]`}
           >
             <Card className="overflow-hidden rounded-[2rem] border-emerald-950/10 shadow-[0_24px_60px_rgba(10,34,28,0.18)]">
               <div className="bg-[#12382f] p-5 text-white">
@@ -2025,7 +2025,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
                 </div>
               </div>
               <CardContent className="p-0">
-                <div className="max-h-[420px] space-y-4 overflow-y-auto bg-[#fbfcfb] p-5">
+                <div className="max-h-[calc(100vh-15rem)] sm:max-h-[420px] space-y-4 overflow-y-auto bg-[#fbfcfb] p-4 sm:p-5">
                   {messages.map((message, idx) => (
                     <div key={`${message.role}-${idx}`} className={`flex ${message.role === "user" ? (isRTL ? "justify-start" : "justify-end") : (isRTL ? "justify-end" : "justify-start")}`}>
                       <div className={`max-w-[85%] rounded-3xl px-4 py-3 text-sm leading-7 whitespace-pre-line ${message.role === "user" ? "bg-[#12382f] text-white" : "bg-white text-[#1e3f36] border border-emerald-950/10"}`}>
