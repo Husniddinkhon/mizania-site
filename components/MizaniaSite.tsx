@@ -2020,6 +2020,10 @@ export default function MIZANIAWebsiteV2({
   initialPage?: string;
 }) {
   const [currentPage, setCurrentPage] = useState(initialPage);
+}: {
+  initialPage?: string;
+}) {
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [language, setLanguage] = useState<LanguageCode>("uz");
   const [chatOpen, setChatOpen] = useState(false);
