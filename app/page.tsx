@@ -95,7 +95,9 @@ const languages = [
   { code: "kir", label: "КИР" },
   { code: "lat", label: "LAT" },
   { code: "ar", label: "AR" },
-];
+] as const;
+
+type LanguageCode = (typeof languages)[number]["code"];
 
 const rtlLanguages = ["ar"];
 
@@ -951,7 +953,7 @@ const ar = {
 };
 
 const kir = convertToCyrillic(uzLatin);
-const dictionary = {
+const dictionary: Record<LanguageCode, any> = {
   en: {
     ...en,
     network: {
@@ -2041,7 +2043,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
 export default function MIZANIAWebsiteV2() {
   const [currentPage, setCurrentPage] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState("kir");
+  const [language, setLanguage] = useState<LanguageCode>("kir");
   const [chatOpen, setChatOpen] = useState(false);
 
   const t = dictionary[language];
