@@ -1606,6 +1606,7 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([{ role: "assistant", text: t.ai.hello }]);
   const [leadStep, setLeadStep] = useState(null);
+  const messagesContainerRef = React.useRef(null);
 
   React.useEffect(() => {
     const savedMessages = typeof window !== "undefined" ? sessionStorage.getItem(`mizania_ai_messages_${language}`) : null;
@@ -1633,6 +1634,15 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
       sessionStorage.setItem("mizania_ai_lead", JSON.stringify(leadDraft));
     }
   }, [messages, leadDraft, language]);
+
+  React.useEffect(() => {
+    if (!chatOpen) return;
+    const el = messagesContainerRef.current;
+    if (!el) return;
+    requestAnimationFrame(() => {
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    });
+  }, [messages, chatOpen]);
 
   const quickSuggestions =
     language === "ru"
@@ -1876,7 +1886,7 @@ ${matchedFaq.a}`, page: "faq", lead: false };
                 </div>
               </div>
               <CardContent className="p-0">
-                <div className="max-h-[calc(100vh-15rem)] sm:max-h-[460px] space-y-4 overflow-y-auto bg-[#fbfcfb] p-4 sm:p-5">
+                <div ref={messagesContainerRef} className="max-h-[calc(100vh-15rem)] sm:max-h-[460px] space-y-4 overflow-y-auto overscroll-contain bg-[#fbfcfb] p-4 sm:p-5">
                   {messages.map((message, idx) => (
                     <div key={`${message.role}-${idx}`} className={`flex ${message.role === "user" ? (isRTL ? "justify-start" : "justify-end") : (isRTL ? "justify-end" : "justify-start")}`}>
                       <div className={`max-w-[88%] rounded-3xl px-4 py-3 text-sm leading-7 whitespace-pre-line ${message.role === "user" ? "bg-[#12382f] text-white" : "bg-white text-[#1e3f36] border border-emerald-950/10"}`}>
