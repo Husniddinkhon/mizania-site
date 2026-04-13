@@ -1870,9 +1870,15 @@ function ContactPage({ t, isRTL }) {
   );
 }
 
+type ChatMessage = {
+  role: "assistant" | "user";
+  text: string;
+  page?: string | null;
+};
+
 function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpen }) {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([{ role: "assistant", text: t.ai.hello }]);
+  const [messages, setMessages] = useState<ChatMessage[]>([{ role: "assistant", text: t.ai.hello }]);
 
   React.useEffect(() => {
     setMessages([{ role: "assistant", text: t.ai.hello }]);
@@ -1951,9 +1957,9 @@ function AIChatWidget({ t, language, setCurrentPage, isRTL, chatOpen, setChatOpe
   function sendMessage(customText) {
     const text = (customText ?? input).trim();
     if (!text) return;
-    const userMsg = { role: "user", text };
+    const userMsg: ChatMessage = { role: "user", text };
     const answer = getAnswer(text);
-    const assistantMsg = { role: "assistant", text: answer.text, page: answer.page };
+    const assistantMsg: ChatMessage = { role: "assistant", text: answer.text, page: answer.page };
     setMessages((prev) => [...prev, userMsg, assistantMsg]);
     setInput("");
   }
