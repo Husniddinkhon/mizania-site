@@ -1295,7 +1295,7 @@ function BrandMark({ compact = false, isRTL = false, tagline = "" }) {
 
 function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLabels, language, setLanguage, isRTL, setChatOpen }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
+    <header className="sticky top-0 z-50 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={`flex min-h-[96px] items-center justify-between gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
           <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
@@ -1333,9 +1333,8 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
-      </div>
 
-      {mobileOpen ? (
+        {mobileOpen ? (
           <div className="xl:hidden pb-4">
             <div className="grid grid-cols-1 gap-2 rounded-3xl border border-[#d8cdb5] bg-white p-3 shadow-lg">
               {pageLabels.map((page) => (
@@ -1350,7 +1349,10 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
                   {page.label}
                 </button>
               ))}
-              <button onClick={() => setChatOpen(true)} className={`rounded-2xl bg-[#f5efe1] px-4 py-3 text-sm text-[#12382f] ${isRTL ? "text-right" : "text-left"}`}>
+              <button
+                onClick={() => setChatOpen(true)}
+                className={`rounded-2xl bg-[#f5efe1] px-4 py-3 text-sm text-[#12382f] ${isRTL ? "text-right" : "text-left"}`}
+              >
                 {t.nav.ai}
               </button>
               <MobileLanguageSwitcher language={language} setLanguage={setLanguage} />
