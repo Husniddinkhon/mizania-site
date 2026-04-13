@@ -202,12 +202,12 @@ const uzLatin = {
     title: "Tamoyil, strategiya va ishonchga tayangan moliya.",
     highlight: "Tamoyil",
     description:
-      "MIZANIA halol moliya, islomiy moliya, ta’lim, konsalting va investorlar bilan ishlash yo‘nalishlarida global premium darajadagi brend sifatida qurilgan."
+      "MIZANIA halol moliya, islomiy moliya, ta’lim, konsalting va investorlar bilan ishlash yo‘nalishlarida global premium darajadagi brend sifatida qurilgan.",
     cta1: "Xizmatlarni ko‘rish",
     cta2: "Konsultatsiya so‘rash",
     cards: [
       ["Premium", "Global korporativ ko‘rinish"],
-      ["Adolatli", "Adolatga tayangan yondashuv"]
+      ["Adolatli", "Adolatga tayangan yondashuv"],
       ["Ishonchli", "Sokin va professional imidj"],
     ],
     promise: "Brend va’dasi",
@@ -217,7 +217,7 @@ const uzLatin = {
   trust: {
     eyebrow: "Ishonch indikatorlari",
     items: [
-      ["Tamoyilli", "Tamoyilga asoslangan qarorlar"]
+      ["Tamoyilli", "Tamoyilga asoslangan qarorlar"],
       ["Islomiy", "Shariatga mos moliyaviy yondashuv"],
       ["Ta’lim", "Bilimga asoslangan qiymat"],
       ["Premium", "Global darajadagi taqdimot"],
@@ -229,7 +229,7 @@ const uzLatin = {
     description:
       "MIZANIA oddiy moliyaviy sayt emas. U adolat, muvozanat, ta’lim va strategik ishonchga qurilgan premium platforma.",
     points: [
-      "Adolat ва tamoyilga asoslangan premium pozitsiya",
+      "Adolat va tamoyilga asoslangan premium pozitsiya",
       "Nafis va minimal vizual identitet",
       "Kuchli ta’lim va konsalting qiyofasi",
       "Global auditoriya va jiddiy hamkorlar uchun mos",
@@ -238,7 +238,7 @@ const uzLatin = {
   },
   services: {
     eyebrow: "Xizmatlar",
-    title: "Halol va barqaror o‘sish uchun premium xizmatlar."
+    title: "Halol va barqaror o‘sish uchun premium xizmatlar.",
     description:
       "Har bir taklif nafis, strategik va yuqori ishonch uyg‘otadigan tarzda ishlab chiqilgan.",
     button: "Barcha xizmatlar",
@@ -267,14 +267,14 @@ const uzLatin = {
     description:
       "Brend tili ataylab sokin va baland darajada qurilgan. U ortiqcha shovqinsiz ishonch, isrofsiz premiumlik va bosimsiz ekspertiza beradi.",
     cards: [
-      ["Adolatga tayangan identitet", "Brend hikoyasi adolat, muvozanat va mas’uliyatga qurilgan."],
+      ["Adolatga tayangan identitet", "Brend hikoyasi adolat, muvozanat va mas’uliyat tamoyillariga qurilgan."],
       ["Premium korporativ dizayn", "Global konsalting va moliya sohasi uchun mos vizual tizim."],
       ["Murojaat uchun qulay tuzilma", "CTA, aloqa nuqtalari va foydalanuvchini murojaatga olib keluvchi sodda arxitektura."],
       ["AI yordamchi", "Savol-javob, yo‘naltirish va xizmatlar bo‘yicha tezkor yordam imkoniyati."],
     ],
   },
   principles: {
-    eyebrow: "Halol va adolatli moliya tamoyillari"
+    eyebrow: "Halol va adolatli moliya tamoyillari",
     title: "Tamoyillar bezak emas. Ular butun tuzilmaning o‘zi.",
     description:
       "MIZANIAning moliyaga qarashi adolat, shaffoflik, javobgarlik va haqiqiy qiymat yaratishga tayangan.",
@@ -292,11 +292,11 @@ const uzLatin = {
     eyebrow: "Ta’lim takliflari",
     title: "Jiddiy o‘sish uchun yaratilgan bilim.",
     description:
-      "Halol moliya, islomiy moliya va amaliy strategik fikrlashni chuqur tushunishni istaganlar uchun kurslar va workshoplar."
+      "Halol moliya, islomiy moliya va amaliy strategik fikrlashni chuqur tushunishni istaganlar uchun kurslar va workshoplar.",
     button1: "Kurslarni ko‘rish",
     button2: "Dastur so‘rash",
     cards: [
-      ["Asoslar", "Halol va islomiy moliya tamoyillari"]
+      ["Asoslar", "Halol va islomiy moliya tamoyillari"],
       ["Executive", "Qaror qabul qiluvchilar uchun yopiq workshoplar"],
       ["Amaliy", "Keyslar asosidagi mashg‘ulotlar"],
       ["Premium", "Yuqori darajadagi ta’lim tajribasi"],
@@ -310,7 +310,7 @@ const uzLatin = {
     items: [
       {
         name: "Xususiy investor",
-        role: "Ishonchli kapital hamkori"
+        role: "Ishonchli kapital hamkori",
         quote:
           "MIZANIA sokin professionallikni noyob ma’naviy aniqlik bilan uyg‘unlashtiradi. Brend global va ishonchli ko‘rinadi.",
       },
@@ -335,7 +335,7 @@ const uzLatin = {
       "Sizga maslahat, ta’lim, strategik aniqlik yoki investorlar uchun premium taqdimot kerak bo‘lsa, MIZANIA kuchli boshlanish nuqtasini beradi.",
     button1: "Konsultatsiya so‘rash",
     button2: "Investorlar sahifasi",
-    formTitle: "Lead generation forma",
+    formTitle: "So‘rov shakli",
     fullName: "To‘liq ism",
     email: "Email manzil",
     company: "Kompaniya yoki tashkilot",
@@ -346,12 +346,12 @@ const uzLatin = {
     eyebrow: "Ko‘p so‘raladigan savollar",
     title: "Aniqlik ishonchni oshiradi va to‘siqlarni kamaytiradi.",
     description:
-      "Premium sayt savollarga oldindan javob berib, ishonch va murojaat ehtimolini oshiradi.",
+      "Muhim savollarga олдиндан жавоб бериш ишончни оширади ва мурожаат эҳтимолини кучайтиради.",
     button: "To‘liq FAQ",
     items: [
       {
         q: "MIZANIA nimaga ixtisoslashgan?",
-        a: "MIZANIA halol moliya, islomiy moliya, ta’lim, strategik konsalting va investorlar bilan ishlash yo‘nalishlariga ixtisoslashgan."
+        a: "MIZANIA halol moliya, islomiy moliya, ta’lim, strategik konsalting va investorlar bilan ishlash yo‘nalishlariga ixtisoslashgan.",
       },
       {
         q: "Onlayn kurslar bormi?",
@@ -369,11 +369,11 @@ const uzLatin = {
   },
   investors: {
     eyebrow: "Investorlar",
-    title: "Ishonchli va uzoq muddatli kapital bilan ishlashga mos sahifa."
+    title: "Ishonchli va uzoq muddatli kapital bilan ishlashga mos sahifa.",
     description:
       "Bu bo‘lim investorlarni MIZANIA falsafasi, boshqaruv yondashuvi va ishonchliligi bilan tanishtiradi.",
     blocks: [
-      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va tamoyillarga sodiqlik ham muhim."]
+      ["Ishonchga tayangan pozitsiya", "Investorlar uchun imkoniyatdan tashqari intizom, aniqlik va tamoyillarga sodiqlik ham muhim."],
       ["Uzoq muddatli qiymat", "MIZANIA kapitalni mas’uliyat va barqaror foyda vositasi sifatida ko‘radi."],
       ["Taqdimot sifati", "Premium vizual uslub va korporativ darajadagi taqdimot investor ishonchini oshiradi."],
     ],
@@ -386,9 +386,9 @@ const uzLatin = {
     read: "Maqolani o‘qish",
     items: [
       {
-        category: "Halol moliya"
-        title: "Zamonaviy iqtisodda halol moliya nimani anglatadi"
-        excerpt: "Mas’uliyat, ishonch va barqaror qiymat yaratish haqidagi premium qarash.",
+        category: "Halol moliya",
+        title: "Zamonaviy iqtisodda halol moliya nimani anglatadi",
+        excerpt: "Mas’uliyat, ishonch va barqaror qiymat yaratish haqidagi professional qarash.",
       },
       {
         category: "Islomiy moliya",
@@ -405,7 +405,8 @@ const uzLatin = {
   contact: {
     eyebrow: "Aloqa",
     title: "MIZANIA bilan bog‘lanish uchun qulay va ishonchli nuqta.",
-    description: "Savolingiz, hamkorlik taklifi yoki konsultatsiya so‘rovingiz bo‘lsa, bizga yozing. Jamoamiz siz bilan tez orada bog‘lanadi.",
+    description:
+      "Savolingiz, hamkorlik taklifi yoki konsultatsiya so‘rovingiz bo‘lsa, bizga yozing. Jamoamiz siz bilan tez orada bog‘lanadi.",
     name: "Ismingiz",
     email: "Email manzil",
     phone: "Telefon raqam",
@@ -414,12 +415,13 @@ const uzLatin = {
     send: "Xabar yuborish",
   },
   footer: {
-    description: "Adolat, muvozanat va ishonchga tayangan premium halol moliya, islomiy moliya, konsalting va ta’lim."
+    description:
+      "Adolat, muvozanat va ishonchga tayangan premium halol moliya, islomiy moliya, konsalting va ta’lim.",
     pages: "Sahifalar",
     explore: "Bo‘limlar",
     contact: "Aloqa",
     rights: "© 2026 MIZANIA. Barcha huquqlar himoyalangan.",
-    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi bilan kuchaytirilgan platforma.",
+    note: "Premium ishonch, zamonaviy aniqlik va AI yordamchi билан кучайтирилган платформа.",
   },
   ai: {
     title: "MIZANIA AI",
