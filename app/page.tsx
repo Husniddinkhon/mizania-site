@@ -1561,7 +1561,81 @@ function FAQPage({ t, isRTL }) {
   );
 }
 
-function ContactPage({ t, isRTL, leadDraft, setLeadDraft }) {
+function ContactPage({ t, language, isRTL, leadDraft, setLeadDraft }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setSubmitMessage("");
+    setSubmitError("");
+
+    if (!leadDraft.name?.trim() || !leadDraft.phone?.trim() || !leadDraft.message?.trim()) {
+      setSubmitError(
+        t.contact.validation ||
+          (language === "ru"
+            ? "Пожалуйста, заполните имя, телефон и сообщение."
+            : language === "en"
+            ? "Please fill in your name, phone number, and message."
+            : "Iltimos, ism, telefon raqam va xabar maydonini to‘ldiring.")
+      );
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await fetch("https://formsubmit.co/ajax/mizaniamchj@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: leadDraft.name,
+          email: leadDraft.email || "",
+          phone: leadDraft.phone,
+          company: leadDraft.company,
+          message: leadDraft.message,
+          _subject: `MIZANIA Contact Request — ${leadDraft.name}`,
+          _template: "table",
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.message || "Submission failed");
+      }
+
+      setSubmitMessage(
+        language === "ru"
+          ? "Сообщение успешно отправлено. Проверьте почту MIZANIA и письмо активации, если форма отправляется впервые."
+          : language === "en"
+          ? "Your message was sent successfully. Check the MIZANIA inbox and the activation email if this form is being used for the first time."
+          : "Xabaringiz muvaffaqiyatli yuborildi. Agar bu forma birinchi marta ishlayotgan bo‘lsa, MIZANIA pochtasiga kelgan activation xatini tasdiqlang."
+      );
+
+      setLeadDraft({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitError(
+        language === "ru"
+          ? "Не удалось отправить сообщение. Пожалуйста, попробуйте снова или напишите нам по email."
+          : language === "en"
+          ? "There was a problem sending your message. Please try again or contact us by email."
+          : "Xabarni yuborishda muammo yuz berdi. Iltimos, yana urinib ko‘ring yoki email orqali yozing."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <div className={`grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 items-start ${isRTL ? "lg:[direction:rtl]" : ""}`}>
@@ -1574,14 +1648,28 @@ function ContactPage({ t, isRTL, leadDraft, setLeadDraft }) {
           </div>
         </div>
         <Card className="rounded-[2rem] border-emerald-950/10 shadow-sm">
-          <CardContent className="p-8 grid gap-4">
-            <Input value={leadDraft.name} onChange={(e) => setLeadDraft((prev) => ({ ...prev, name: e.target.value }))} placeholder={t.contact.name} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input value={leadDraft.email || ""} onChange={(e) => setLeadDraft((prev) => ({ ...prev, email: e.target.value }))} placeholder={t.contact.email} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input value={leadDraft.phone} onChange={(e) => setLeadDraft((prev) => ({ ...prev, phone: e.target.value }))} placeholder={t.contact.phone} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Input value={leadDraft.company} onChange={(e) => setLeadDraft((prev) => ({ ...prev, company: e.target.value }))} placeholder={t.contact.company} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Textarea value={leadDraft.message} onChange={(e) => setLeadDraft((prev) => ({ ...prev, message: e.target.value }))} placeholder={t.contact.message} className={`min-h-[140px] rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
-            <Button className="rounded-full bg-[#12382f] hover:bg-[#0f2f27]">{t.contact.send}</Button>
-          </CardContent>
+          <form onSubmit={handleSubmit}>
+            <CardContent className="p-8 grid gap-4">
+              <Input value={leadDraft.name} onChange={(e) => setLeadDraft((prev) => ({ ...prev, name: e.target.value }))} placeholder={t.contact.name} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+              <Input value={leadDraft.email || ""} onChange={(e) => setLeadDraft((prev) => ({ ...prev, email: e.target.value }))} placeholder={t.contact.email} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+              <Input value={leadDraft.phone} onChange={(e) => setLeadDraft((prev) => ({ ...prev, phone: e.target.value }))} placeholder={t.contact.phone} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+              <Input value={leadDraft.company} onChange={(e) => setLeadDraft((prev) => ({ ...prev, company: e.target.value }))} placeholder={t.contact.company} className={`rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+              <Textarea value={leadDraft.message} onChange={(e) => setLeadDraft((prev) => ({ ...prev, message: e.target.value }))} placeholder={t.contact.message} className={`min-h-[140px] rounded-2xl ${isRTL ? "text-right" : "text-left"}`} />
+
+              {submitError ? <div className={`rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 ${isRTL ? "text-right" : "text-left"}`}>{submitError}</div> : null}
+              {submitMessage ? <div className={`rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 ${isRTL ? "text-right" : "text-left"}`}>{submitMessage}</div> : null}
+
+              <Button type="submit" disabled={isSubmitting} className="rounded-full bg-[#12382f] hover:bg-[#0f2f27]">
+                {isSubmitting
+                  ? language === "ru"
+                    ? "Отправка..."
+                    : language === "en"
+                    ? "Sending..."
+                    : "Yuborilmoqda..."
+                  : t.contact.send}
+              </Button>
+            </CardContent>
+          </form>
         </Card>
       </div>
     </section>
@@ -2049,7 +2137,7 @@ export default function MIZANIAWebsiteV2() {
       case "faq":
         return <FAQPage t={t} isRTL={isRTL} />;
       case "contact":
-        return <ContactPage t={t} isRTL={isRTL} leadDraft={leadDraft} setLeadDraft={setLeadDraft} />;
+        return <ContactPage t={t} language={language} isRTL={isRTL} leadDraft={leadDraft} setLeadDraft={setLeadDraft} />;
       default:
         return <HomePage setCurrentPage={setCurrentPage} t={t} isRTL={isRTL} language={language} />;
     }
