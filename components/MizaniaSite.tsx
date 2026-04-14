@@ -2034,9 +2034,6 @@ export default function MIZANIAWebsiteV2({
   const t = dictionary[language];
   const isRTL = rtlLanguages.includes(language);
 
-  const t = dictionary[language];
-  const isRTL = rtlLanguages.includes(language);
-
   const pageLabels = [
     { key: "home", label: t.pages.home },
     { key: "about", label: t.pages.about },
@@ -2164,7 +2161,12 @@ export default function MIZANIAWebsiteV2({
         isRTL={isRTL}
         setChatOpen={setChatOpen}
       />
-      <motion.main key={`${currentPage}-${language}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: "easeOut" }}>
+      <motion.main
+        key={`${currentPage}-${language}`}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      >
         {pageContent}
       </motion.main>
       <Footer setCurrentPage={setCurrentPage} t={t} pageLabels={pageLabels} isRTL={isRTL} />
