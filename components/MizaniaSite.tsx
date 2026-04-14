@@ -1400,17 +1400,35 @@ function Footer({ setCurrentPage, t, pageLabels, isRTL }) {
           <div className={isRTL ? "text-right" : "text-left"}>
             <div className="font-semibold text-[#12382f]">{t.footer.pages}</div>
             <div className="mt-4 space-y-3 text-[#566e66]">
-              {pageLabels.slice(0, 5).map((page) => (
-                <button key={page.key} onClick={() => setCurrentPage(page.key)} className="block hover:text-[#12382f]">{page.label}</button>
-              ))}
+              {pageLabels.slice(0, 5).map((page) => {
+                const href = getPageHref(page.key);
+                return href ? (
+                  <Link key={page.key} href={href} className="block hover:text-[#12382f]">
+                    {page.label}
+                  </Link>
+                ) : (
+                  <button key={page.key} onClick={() => setCurrentPage(page.key)} className="block hover:text-[#12382f]">
+                    {page.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div className={isRTL ? "text-right" : "text-left"}>
             <div className="font-semibold text-[#12382f]">{t.footer.explore}</div>
             <div className="mt-4 space-y-3 text-[#566e66]">
-              {pageLabels.slice(5).map((page) => (
-                <button key={page.key} onClick={() => setCurrentPage(page.key)} className="block hover:text-[#12382f]">{page.label}</button>
-              ))}
+              {pageLabels.slice(5).map((page) => {
+                const href = getPageHref(page.key);
+                return href ? (
+                  <Link key={page.key} href={href} className="block hover:text-[#12382f]">
+                    {page.label}
+                  </Link>
+                ) : (
+                  <button key={page.key} onClick={() => setCurrentPage(page.key)} className="block hover:text-[#12382f]">
+                    {page.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
           <div className={isRTL ? "text-right" : "text-left"}>
