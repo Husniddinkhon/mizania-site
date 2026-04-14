@@ -106,6 +106,9 @@ const pageHrefMap: Record<string, string> = {
   about: "/about",
   services: "/services",
   islamicFinance: "/islamic-finance",
+  courses: "/courses",
+  consulting: "/consulting",
+  investors: "/investors",
   contact: "/contact",
 };
 
