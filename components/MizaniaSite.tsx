@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck,
@@ -99,6 +100,18 @@ const languages = [
 type LanguageCode = (typeof languages)[number]["code"];
 
 const rtlLanguages: LanguageCode[] = [];
+
+const pageHrefMap: Record<string, string> = {
+  home: "/",
+  about: "/about",
+  services: "/services",
+  islamicFinance: "/islamic-finance",
+  contact: "/contact",
+};
+
+function getPageHref(pageKey: string) {
+  return pageHrefMap[pageKey] || null;
+}
 
 
 
@@ -1000,20 +1013,25 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
     <header className="sticky top-0 z-50 border-b border-[#d8cdb5] bg-[#fbf8f1] shadow-[0_8px_24px_rgba(16,48,40,0.06)]">
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
         <div className={`flex min-h-[78px] sm:min-h-[92px] items-center justify-between gap-3 sm:gap-4 ${isRTL ? "flex-row-reverse" : ""}`}>
-          <button className={isRTL ? "text-right" : "text-left"} onClick={() => setCurrentPage("home")}>
+          <Link href="/" className={isRTL ? "text-right" : "text-left"}>
             <BrandMark compact isRTL={isRTL} tagline={t.brand.tagline} />
-          </button>
+          </Link>
 
           <nav className="hidden xl:flex items-center gap-1 rounded-full border border-[#d8cdb5] bg-white px-2 py-1.5 shadow-sm">
-            {pageLabels.slice(0, 8).map((page) => (
-              <button
-                key={page.key}
-                onClick={() => setCurrentPage(page.key)}
-                className={`rounded-full px-3.5 py-2.5 text-[13px] transition ${currentPage === page.key ? "bg-[#12382f] text-white shadow-sm" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
-              >
-                {getNavLabel(page)}
-              </button>
-            ))}
+            {pageLabels.slice(0, 8).map((page) => {
+              const href = getPageHref(page.key);
+              const className = `rounded-full px-3.5 py-2.5 text-[13px] transition ${currentPage === page.key ? "bg-[#12382f] text-white shadow-sm" : "text-[#20453b] hover:bg-[#f5efe1]"}`;
+
+              return href ? (
+                <Link key={page.key} href={href} className={className}>
+                  {getNavLabel(page)}
+                </Link>
+              ) : (
+                <button key={page.key} onClick={() => setCurrentPage(page.key)} className={className}>
+                  {getNavLabel(page)}
+                </button>
+              );
+            })}
           </nav>
 
           <div className={`hidden md:flex items-center gap-3 shrink-0 ${isRTL ? "flex-row-reverse" : ""}`}>
@@ -1026,9 +1044,11 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
             >
               <MessageSquare className="h-4 w-4" />
             </button>
-            <Button className="rounded-full bg-[#cba95a] px-5 py-3 text-[#12382f] hover:bg-[#c39f4d]" onClick={() => setCurrentPage("contact")}>
-              {t.nav.speak}
-            </Button>
+            <Link href="/contact">
+              <Button className="rounded-full bg-[#cba95a] px-5 py-3 text-[#12382f] hover:bg-[#c39f4d]">
+                {t.nav.speak}
+              </Button>
+            </Link>
           </div>
 
           <button className="xl:hidden rounded-full border border-[#d8cdb5] p-3 text-[#12382f]" onClick={() => setMobileOpen(!mobileOpen)}>
@@ -1039,18 +1059,32 @@ function Nav({ currentPage, setCurrentPage, mobileOpen, setMobileOpen, t, pageLa
         {mobileOpen ? (
           <div className="xl:hidden pb-4">
             <div className="grid grid-cols-1 gap-2 rounded-3xl border border-[#d8cdb5] bg-white p-3 shadow-lg">
-              {pageLabels.map((page) => (
-                <button
-                  key={page.key}
-                  onClick={() => {
-                    setCurrentPage(page.key);
-                    setMobileOpen(false);
-                  }}
-                  className={`rounded-2xl px-4 py-3 ${isRTL ? "text-right" : "text-left"} text-sm ${currentPage === page.key ? "bg-[#12382f] text-white" : "text-[#20453b] hover:bg-[#f5efe1]"}`}
-                >
-                  {page.label}
-                </button>
-              ))}
+              {pageLabels.map((page) => {
+                const href = getPageHref(page.key);
+                const className = `rounded-2xl px-4 py-3 ${isRTL ? "text-right" : "text-left"} text-sm ${currentPage === page.key ? "bg-[#12382f] text-white" : "text-[#20453b] hover:bg-[#f5efe1]"}`;
+
+                return href ? (
+                  <Link
+                    key={page.key}
+                    href={href}
+                    onClick={() => setMobileOpen(false)}
+                    className={className}
+                  >
+                    {page.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={page.key}
+                    onClick={() => {
+                      setCurrentPage(page.key);
+                      setMobileOpen(false);
+                    }}
+                    className={className}
+                  >
+                    {page.label}
+                  </button>
+                );
+              })}
               <button
                 onClick={() => setChatOpen(true)}
                 className={`rounded-2xl bg-[#f5efe1] px-4 py-3 text-sm text-[#12382f] ${isRTL ? "text-right" : "text-left"}`}
@@ -2161,12 +2195,7 @@ export default function MIZANIAWebsiteV2({
         isRTL={isRTL}
         setChatOpen={setChatOpen}
       />
-      <motion.main
-        key={`${currentPage}-${language}`}
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-      >
+      <motion.main key={`${currentPage}-${language}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: "easeOut" }}>
         {pageContent}
       </motion.main>
       <Footer setCurrentPage={setCurrentPage} t={t} pageLabels={pageLabels} isRTL={isRTL} />
