@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import MIZANIAWebsiteV2 from "@/components/MizaniaSite";
+import MIZANIAWebsiteV2 from "../../components/MizaniaSite";
 
 export const metadata: Metadata = {
   title: "Islomiy moliya",
