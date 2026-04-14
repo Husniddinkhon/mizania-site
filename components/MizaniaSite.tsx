@@ -2034,6 +2034,9 @@ export default function MIZANIAWebsiteV2({
   const t = dictionary[language];
   const isRTL = rtlLanguages.includes(language);
 
+  const t = dictionary[language];
+  const isRTL = rtlLanguages.includes(language);
+
   const pageLabels = [
     { key: "home", label: t.pages.home },
     { key: "about", label: t.pages.about },
