@@ -2033,9 +2033,17 @@ ${matchedFaq.a}`, page: "faq", lead: false };
                         {message.text}
                         {message.page ? (
                           <div className="mt-3">
-                            <Button size="sm" variant="outline" className="rounded-full border-[#12382f]/20 text-[#12382f] hover:bg-emerald-50" onClick={() => setCurrentPage(message.page)}>
-                              {openSectionLabel}
-                            </Button>
+                            {getPageHref(message.page) ? (
+                              <Link href={getPageHref(message.page)!}>
+                                <Button size="sm" variant="outline" className="rounded-full border-[#12382f]/20 text-[#12382f] hover:bg-emerald-50">
+                                  {openSectionLabel}
+                                </Button>
+                              </Link>
+                            ) : (
+                              <Button size="sm" variant="outline" className="rounded-full border-[#12382f]/20 text-[#12382f] hover:bg-emerald-50" onClick={() => setCurrentPage(message.page)}>
+                                {openSectionLabel}
+                              </Button>
+                            )}
                           </div>
                         ) : null}
                       </div>
